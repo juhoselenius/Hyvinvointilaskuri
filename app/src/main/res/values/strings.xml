@@ -9,4 +9,7 @@
     <string name="text_gender">Sukupuoli:</string>
     <string name="rb_genderMale">Mies</string>
     <string name="rb_genderFemale">Nainen</string>
+    <string name="lisaapaino">Lisää paino</string>
+    <string name="lisaapituus">Lisää pituus</string>
+    <string name="lisaaruokailu">Lisää ruokailu</string>
 </resources>

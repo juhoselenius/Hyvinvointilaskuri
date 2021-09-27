@@ -10,19 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hyvinvointilaskuri">
         <activity
+            android:name=".AddObservationActivity"
+            android:exported="true" />
+        <activity
             android:name=".ObservationActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
+
         <activity
             android:name=".AddUserActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
