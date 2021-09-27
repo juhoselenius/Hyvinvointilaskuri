@@ -12,6 +12,7 @@
         <activity
             android:name=".AddObservationActivity"
             android:exported="true" />
+
         <activity
             android:name=".ObservationActivity"
             android:exported="true"
