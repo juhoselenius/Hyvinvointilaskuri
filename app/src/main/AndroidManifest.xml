@@ -13,6 +13,9 @@
             android:name=".ObservationActivity"
             android:exported="true" />
         <activity
+            android:name=".AddUserActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

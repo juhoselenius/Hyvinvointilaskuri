@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+    public void userButton(View v) {
+        Intent intent = new Intent(this, AddUserActivity.class);
+
+        startActivity(intent);
+    }
 
 
 }
