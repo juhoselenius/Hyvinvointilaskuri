@@ -12,7 +12,4 @@
     <string name="lisaapaino">Lisää paino</string>
     <string name="lisaapituus">Lisää pituus</string>
     <string name="lisaaruokailu">Lisää ruokailu</string>
-    <string name="send">Lisää</string>
-    <string name="add_meal_name">Ruoan nimi?</string>
-    <string name="add_meal_calories">Ruoan kalorit?</string>
 </resources>
