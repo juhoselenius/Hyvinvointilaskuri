@@ -4,12 +4,16 @@
     <string name="add_observation">+ Lisää havainto</string>
     <string name="text_BMI">BMI</string>
     <string name="add_userName">Käyttäjänimi</string>
-    <string name="add_userWeight">Paino (kg)</string>
-    <string name="add_userHeight">Pituus (cm)</string>
-    <string name="text_gender">Sukupuoli</string>
+    <string name="add_userWeight">Paino</string>
+    <string name="add_userHeight">Pituus</string>
+    <string name="text_gender">Sukupuoli:</string>
     <string name="rb_genderMale">Mies</string>
     <string name="rb_genderFemale">Nainen</string>
     <string name="lisaapaino">Lisää paino</string>
     <string name="lisaapituus">Lisää pituus</string>
     <string name="lisaaruokailu">Lisää ruokailu</string>
+    <string name="send">Lisää</string>
+    <string name="add_meal_name">Ruoan nimi?</string>
+    <string name="add_meal_calories">Ruoan kalorit?</string>
+    <string name="button_newUser">Lisää</string>
 </resources>
