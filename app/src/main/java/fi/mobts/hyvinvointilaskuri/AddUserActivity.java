@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class AddUserActivity extends AppCompatActivity {
@@ -53,7 +51,7 @@ private String gender;
     int weight = Integer.parseInt(userWeight.getText().toString());
     int height = Integer.parseInt(userHeight.getText().toString());
 
-    UserClass user = new UserClass(name, weight, height, gender);
+    User user = new User(name, weight, height, gender);
     }
 
 }

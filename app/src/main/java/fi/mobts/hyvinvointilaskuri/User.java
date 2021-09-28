@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-public class UserClass {
+public class User {
     private String name;
     private int weight;
     private int height;
     private String gender;
 
-    public UserClass(String name, int weight, int height, String gender) {
+    public User(String name, int weight, int height, String gender) {
     this.name = name;
     this.weight = weight;
     this.height = height;
