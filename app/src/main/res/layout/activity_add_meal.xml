@@ -7,17 +7,17 @@
     tools:context=".AddObservationActivity">
 
     <Button
-        android:id="@+id/buttonSend"
+        android:id="@+id/buttonAddWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="102dp"
         android:text="@string/send"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextAddWeight"
+        app:layout_constraintStart_toStartOf="@+id/editTextAddWeight"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddWeight" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextAddWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="105dp"
@@ -37,6 +37,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/add_meal_calories"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextAddWeight"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddWeight" />
 </androidx.constraintlayout.widget.ConstraintLayout>

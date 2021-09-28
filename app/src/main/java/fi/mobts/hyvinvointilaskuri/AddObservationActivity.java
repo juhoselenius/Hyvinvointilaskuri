@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class AddObservationActivity extends AppCompatActivity {
-
+    private EditText editTextAddWeight;
+    private Button buttonAddWeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +28,13 @@ public class AddObservationActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    public void addWeight() {
+        editTextAddWeight = findViewById(R.id.editTextWeight);
+
+        double weight = Double.parseDouble(String.valueOf(editTextAddWeight.getText()));
+
+        WeightDataGlobal.getInstance().addWeight(weight);
     }
 }

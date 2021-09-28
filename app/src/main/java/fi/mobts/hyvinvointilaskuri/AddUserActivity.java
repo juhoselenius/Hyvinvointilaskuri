@@ -52,6 +52,9 @@ private String gender;
     int height = Integer.parseInt(userHeight.getText().toString());
 
     User user = new User(name, weight, height, gender);
+
+    WeightDataGlobal.getInstance().addWeight(weight);
+
     }
 
 }
