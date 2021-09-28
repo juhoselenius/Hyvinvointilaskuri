@@ -6,11 +6,11 @@ import android.widget.Button;
 
 public class User {
     private String name;
-    private int weight;
+    private double weight;
     private int height;
     private String gender;
 
-    public User(String name, int weight, int height, String gender) {
+    public User(String name, double weight, int height, String gender) {
     this.name = name;
     this.weight = weight;
     this.height = height;
@@ -25,11 +25,11 @@ public class User {
         this.name = name;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

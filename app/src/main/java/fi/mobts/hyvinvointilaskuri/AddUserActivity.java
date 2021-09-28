@@ -9,11 +9,11 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 public class AddUserActivity extends AppCompatActivity {
-private EditText userName;
-private EditText userWeight;
-private EditText userHeight;
-private RadioGroup userGender;
-private String gender;
+    private EditText userName;
+    private EditText userWeight;
+    private EditText userHeight;
+    private RadioGroup userGender;
+    private String gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +47,13 @@ private String gender;
     }
 
     public void userAdded(View v) {
-    String name = userName.getText().toString();
-    int weight = Integer.parseInt(userWeight.getText().toString());
-    int height = Integer.parseInt(userHeight.getText().toString());
+        String name = userName.getText().toString();
+        double weight = Double.parseDouble(userWeight.getText().toString());
+        int height = Integer.parseInt(userHeight.getText().toString());
 
-    User user = new User(name, weight, height, gender);
+        User user = new User(name, weight, height, gender);
 
-    WeightDataGlobal.getInstance().addWeight(weight);
+        WeightDataGlobal.getInstance().addWeight(weight);
 
     }
 
