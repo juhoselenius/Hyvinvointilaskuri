@@ -1,4 +1,4 @@
-package fi.mobts.hyvinvointilaskuri;
+package fi.mobts.hyvinvointilaskuri.classes;
 
 import android.content.Intent;
 import android.view.View;

@@ -1,12 +1,12 @@
-package fi.mobts.hyvinvointilaskuri;
+package fi.mobts.hyvinvointilaskuri.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+
+import fi.mobts.hyvinvointilaskuri.R;
 
 public class ObservationActivity extends AppCompatActivity {
     public static final String EXTRA = "fi.mobts.hyvinvointilaskuri.EXTRA";

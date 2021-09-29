@@ -1,13 +1,12 @@
-package fi.mobts.hyvinvointilaskuri;
+package fi.mobts.hyvinvointilaskuri.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+
+import fi.mobts.hyvinvointilaskuri.R;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddObservationActivity">
+    tools:context=".activities.AddObservationActivity">
 
     <Button
         android:id="@+id/buttonAddWeight"

@@ -5,7 +5,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ObservationActivity">
+    tools:context=".activities.ObservationActivity">
 
     <Button
         android:id="@+id/buttonWeight"
