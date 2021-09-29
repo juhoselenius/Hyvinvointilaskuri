@@ -9,6 +9,7 @@ import java.util.List;
 public class WeightDataGlobal {
     private List<Double> weights;
     private List<Date> time;
+    private List<User> adder;
     private static final WeightDataGlobal ourInstance = new WeightDataGlobal();
 
     public static WeightDataGlobal getInstance() {
