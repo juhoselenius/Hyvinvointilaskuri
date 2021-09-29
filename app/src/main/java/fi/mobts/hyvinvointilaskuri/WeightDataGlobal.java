@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import fi.mobts.hyvinvointilaskuri.classes.User;
 
 public class WeightDataGlobal {
     private List<Double> weights;

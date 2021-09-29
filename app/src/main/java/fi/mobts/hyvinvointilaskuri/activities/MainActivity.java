@@ -35,11 +35,13 @@ public class MainActivity extends AppCompatActivity {
         graphViewBMI.addSeries(series);
 
     }
+
     public void observationButton(View v) {
         Intent intent = new Intent(this, ObservationActivity.class);
 
         startActivity(intent);
     }
+
     public void userButton(View v) {
         Intent intent = new Intent(this, AddUserActivity.class);
 

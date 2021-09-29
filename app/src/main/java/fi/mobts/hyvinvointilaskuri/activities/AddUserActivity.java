@@ -8,8 +8,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import fi.mobts.hyvinvointilaskuri.R;
+import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 import fi.mobts.hyvinvointilaskuri.WeightDataGlobal;
+import fi.mobts.hyvinvointilaskuri.classes.HeightObservation;
+import fi.mobts.hyvinvointilaskuri.classes.Observation;
+import fi.mobts.hyvinvointilaskuri.classes.User;
+import fi.mobts.hyvinvointilaskuri.classes.WeightObservation;
 
 public class AddUserActivity extends AppCompatActivity {
     private EditText userName;
@@ -39,8 +49,7 @@ public class AddUserActivity extends AppCompatActivity {
 
                 if (selectedId == R.id.rbGenderMale) {
                     gender = "male";
-                }
-                else if (selectedId == R.id.rbGenderFemale) {
+                } else if (selectedId == R.id.rbGenderFemale) {
                     gender = "female";
                 }
 
@@ -53,11 +62,23 @@ public class AddUserActivity extends AppCompatActivity {
         String name = userName.getText().toString();
         double weight = Double.parseDouble(userWeight.getText().toString());
         int height = Integer.parseInt(userHeight.getText().toString());
+        Observation firstWeight = new WeightObservation(weight, getDate());
+        Observation firstHeight = new HeightObservation(height, getDate());
+
 
         User user = new User(name, weight, height, gender);
+        UserListGlobal.getInstance().setCurrentUser(name);
+        UserListGlobal.getInstance().newUser(name);
+        UserListGlobal.getInstance().addObservation(name, firstWeight);
+        UserListGlobal.getInstance().addObservation(name, firstHeight);
+    }
 
-        WeightDataGlobal.getInstance().addWeight(weight);
+    public Date getDate() {
+        Date nyt = new Date();
 
+        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
+        return nyt;
     }
 
 }

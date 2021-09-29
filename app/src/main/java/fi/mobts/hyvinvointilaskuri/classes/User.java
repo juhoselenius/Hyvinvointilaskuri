@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class User {
     private String name;
     private double weight;
@@ -15,6 +17,7 @@ public class User {
     this.weight = weight;
     this.height = height;
     this.gender = gender;
+
     }
 
     public String getName() {
@@ -48,4 +51,7 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+
+
 }
