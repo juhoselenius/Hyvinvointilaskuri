@@ -3,6 +3,7 @@ package fi.mobts.hyvinvointilaskuri;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
@@ -27,6 +28,10 @@ public class UserListGlobal {
 
     }
 
+    public String getCurrentUser() {
+        return currentUser;
+    }
+
     public void addObservation(String name, Observation observation) {
         usersHashMap.get(name).add(observation);
         Log.d("Jorma", "Havainto lisätty " + name);
@@ -37,5 +42,8 @@ public class UserListGlobal {
             usersHashMap.put(name, new ArrayList<>());
             Log.d("Jorma", "Hashmappiin lisätty " + name);
         }
+    }
+    public Date getDate() {
+        return new Date();
     }
 }

@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="102dp"
         android:text="@string/send"
-        app:layout_constraintEnd_toEndOf="@+id/editTextAddWeight"
-        app:layout_constraintStart_toStartOf="@+id/editTextAddWeight"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddWeight" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextWeightObservation"
+        app:layout_constraintStart_toStartOf="@+id/editTextWeightObservation"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWeightObservation" />
 
     <EditText
-        android:id="@+id/editTextAddWeight"
+        android:id="@+id/editTextWeightObservation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="105dp"
