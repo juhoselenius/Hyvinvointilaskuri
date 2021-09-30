@@ -24,7 +24,7 @@ public class UserListGlobal {
 
     public void setCurrentUser(String currentUser) {
         this.currentUser = currentUser;
-        Log.d("Jorma", "Käyttäjä asetettu");
+        Log.d("Jorma", "Käyttäjä asetettu " + currentUser);
 
     }
 

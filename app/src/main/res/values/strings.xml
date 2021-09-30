@@ -16,4 +16,5 @@
     <string name="add_meal_name">Ruoan nimi?</string>
     <string name="add_meal_calories">Ruoan kalorit?</string>
     <string name="button_newUser">Lisää</string>
+    <string name="empty"> </string>
 </resources>

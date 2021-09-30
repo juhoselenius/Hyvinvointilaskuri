@@ -6,13 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".activities.AddUserActivity">
 
+    <TextView
+        android:id="@+id/textViewHeightValidateMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textSize="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textViewGender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewWeightValidateMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textSize="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/editTextHeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWeight"
+        app:layout_constraintVertical_bias="1.0" />
+
     <EditText
         android:id="@+id/editTextProfileName"
-        android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789"
         android:layout_width="380dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
+        android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
         android:ems="10"
         android:hint="@string/add_userName"
         android:inputType="textPersonName"
@@ -21,11 +49,11 @@
 
     <EditText
         android:id="@+id/editTextWeight"
-        android:digits="0123456789."
         android:layout_width="380dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="112dp"
+        android:digits="0123456789."
         android:ems="10"
         android:hint="@string/add_userWeight"
         android:inputType="numberDecimal"
@@ -34,11 +62,11 @@
 
     <EditText
         android:id="@+id/editTextHeight"
-        android:digits="0123456789"
         android:layout_width="380dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="188dp"
+        android:digits="0123456789"
         android:ems="10"
         android:hint="@string/add_userHeight"
         android:inputType="number"
@@ -91,5 +119,20 @@
         android:text="@string/button_newUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNameValidateMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:text="@string/empty"
+        android:textSize="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/editTextWeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextProfileName"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
