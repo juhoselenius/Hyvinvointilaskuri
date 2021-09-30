@@ -32,11 +32,11 @@ public class AddUserActivity extends AppCompatActivity {
     private TextView validateHeight;
     private TextView validateWeight;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
-
         userName = findViewById(R.id.editTextProfileName);
         userWeight = findViewById(R.id.editTextWeight);
         userHeight = findViewById(R.id.editTextHeight);
@@ -66,52 +66,69 @@ public class AddUserActivity extends AppCompatActivity {
     }
 
     public void userAdded(View v) {
+
+        boolean isValid = true;
+        weight = Double.parseDouble(userWeight.getText().toString());
+        height = Integer.parseInt(userHeight.getText().toString());
+
         //Tässä validoidaan nimikenttä
         if (userName.getText().toString().isEmpty()) {
             validateName.setVisibility(View.VISIBLE);
             validateName.setText("Kenttä ei voi olla tyhjä.");
+            isValid = false;
         } else {
             name = userName.getText().toString();
             validateName.setVisibility(View.INVISIBLE);
         }
 
         //Tässä validoidaan painokenttä
-        if(userWeight.getText().toString().isEmpty()) {
+        if (userWeight.getText().toString().isEmpty()) {
             validateWeight.setVisibility(View.VISIBLE);
             validateWeight.setText("Kenttä ei voi olla tyhjä.");
+            isValid = false;
+        } else if (weight > 700 || weight < 1) {
+            validateWeight.setVisibility(View.VISIBLE);
+            validateWeight.setText("Paino pitää olla väliltä 1-700 kg.");
+            isValid = false;
         } else {
-            weight = Double.parseDouble(userWeight.getText().toString());
-            validateHeight.setVisibility(View.INVISIBLE);
+            validateWeight.setVisibility(View.INVISIBLE);
         }
 
         //Tässä validoidaan pituuskenttä
-        if(userHeight.getText().toString().isEmpty()) {
+        if (userHeight.getText().toString().isEmpty()) {
             //Tähän jotain koodia, jos pituuskenttä on tyhjä
             validateHeight.setVisibility(View.VISIBLE);
             validateHeight.setText("Kenttä ei voi olla tyhjä.");
+            isValid = false;
+        } else if (height > 300 || height < 20) {
+            validateHeight.setVisibility(View.VISIBLE);
+            validateHeight.setText("Pituus pitää olla väliltä 20-300 cm.");
+            isValid = false;
         } else {
-            height = Integer.parseInt(userHeight.getText().toString());
             validateHeight.setVisibility(View.INVISIBLE);
         }
 
         //Tallennetaan sukupuoli-valinta
-        if(userGender.getCheckedRadioButtonId() == R.id.rbGenderMale) {
+        if (userGender.getCheckedRadioButtonId() == R.id.rbGenderMale) {
             gender = "male";
         } else if (userGender.getCheckedRadioButtonId() == R.id.rbGenderFemale) {
             gender = "female";
         }
 
         //Luodaan ensihavainnot
-        Observation firstWeight = new WeightObservation(weight, UserListGlobal.getInstance().getDate());
-        Observation firstHeight = new HeightObservation(height, UserListGlobal.getInstance().getDate());
+        if (isValid == true) {
+            Observation firstWeight = new WeightObservation(weight, UserListGlobal.getInstance().getDate());
+            Observation firstHeight = new HeightObservation(height, UserListGlobal.getInstance().getDate());
 
 
-        User user = new User(name, weight, height, gender);
-        UserListGlobal.getInstance().setCurrentUser(name);
-        UserListGlobal.getInstance().newUser(name);
-        UserListGlobal.getInstance().addObservation(name, firstWeight);
-        UserListGlobal.getInstance().addObservation(name, firstHeight);
+            User user = new User(name, weight, height, gender);
+            UserListGlobal.getInstance().setCurrentUser(name);
+            UserListGlobal.getInstance().newUser(name);
+            UserListGlobal.getInstance().addObservation(name, firstWeight);
+            UserListGlobal.getInstance().addObservation(name, firstHeight);
+
+            Intent intentMain = new Intent(this, MainActivity.class);
+            startActivity(intentMain);
+        }
     }
-
-
 }
