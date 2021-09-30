@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="105dp"
         android:ems="10"
+        android:hint="Syötä pituus (cm):"
         android:inputType="textPersonName"
-        android:hint="Syötä pituus:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/editTextProfileName"
-        android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
+        android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789"
         android:layout_width="380dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
