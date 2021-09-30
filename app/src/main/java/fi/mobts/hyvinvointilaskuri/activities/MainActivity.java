@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private GraphView graphViewBMI;
     private Button addUserButton;
+    private Button addObservationButton;
 
 
     @Override
@@ -27,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addUserButton = findViewById(R.id.buttonAddUser);
+        addObservationButton = findViewById(R.id.buttonAddObservation);
         if (!(UserListGlobal.getInstance().getCurrentUser() == null)) {
             addUserButton.setText("Valittu käyttäjä: " + UserListGlobal.getInstance().getCurrentUser());
+            addObservationButton.setVisibility(View.VISIBLE);
         }
 
         }
