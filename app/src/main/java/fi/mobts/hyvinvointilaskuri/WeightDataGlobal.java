@@ -35,6 +35,8 @@ public class WeightDataGlobal {
 
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
+        String formatDate = formatter.format(nyt);
+
         weights.add(weight);
         time.add(nyt);
     }

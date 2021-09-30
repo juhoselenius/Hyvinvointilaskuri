@@ -1,9 +1,6 @@
 package fi.mobts.hyvinvointilaskuri;
 
-import android.os.Build;
 import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +23,7 @@ public class UserListGlobal {
 
     public void setCurrentUser(String currentUser) {
         this.currentUser = currentUser;
+        Log.d("Jorma", "Käyttäjä asetettu");
 
     }
 

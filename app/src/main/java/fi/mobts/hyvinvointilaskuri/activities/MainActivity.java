@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import fi.mobts.hyvinvointilaskuri.R;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        graphViewBMI = findViewById(R.id.graphViewBMI);
+        /*graphViewBMI = findViewById(R.id.graphViewBMI);
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         graphViewBMI.setTitle("Paino");
         graphViewBMI.setTitleColor(R.color.purple_200);
         graphViewBMI.setTitleTextSize(18);
-        graphViewBMI.addSeries(series);
+        graphViewBMI.addSeries(series); */
 
     }
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddUserActivity.class);
 
         startActivity(intent);
+        Log.d("Jorma", "Siirrytty lisäämään käyttäjää");
     }
 
     @Override

@@ -21,27 +21,27 @@
 
     <EditText
         android:id="@+id/editTextWeight"
-        android:digits="1234567890,"
+        android:digits="0123456789.$"
         android:layout_width="380dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="112dp"
         android:ems="10"
         android:hint="@string/add_userWeight"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextHeight"
-        android:digits="1234567890,"
+        android:digits="0123456789"
         android:layout_width="380dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="188dp"
         android:ems="10"
         android:hint="@string/add_userHeight"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

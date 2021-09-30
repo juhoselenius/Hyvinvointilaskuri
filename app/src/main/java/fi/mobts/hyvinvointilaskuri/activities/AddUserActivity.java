@@ -27,6 +27,9 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText userHeight;
     private RadioGroup userGender;
     private String gender;
+    private String name;
+    private double weight;
+    private int height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,13 @@ public class AddUserActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        userGender.setOnClickListener(new View.OnClickListener() {
+        if(userGender.getCheckedRadioButtonId() == R.id.rbGenderMale) {
+            gender = "male";
+        } else if (userGender.getCheckedRadioButtonId() == R.id.rbGenderFemale) {
+            gender = "female";
+        }
+
+        /*userGender.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -55,13 +64,32 @@ public class AddUserActivity extends AppCompatActivity {
 
             }
 
-        });
+        });*/
     }
 
     public void userAdded(View v) {
-        String name = userName.getText().toString();
-        double weight = Double.parseDouble(userWeight.getText().toString());
-        int height = Integer.parseInt(userHeight.getText().toString());
+        //Tässä validoidaan nimikenttä
+        if (userName.getText().toString().isEmpty()) {
+            //Tähän jotain koodia, jos nimikenttä on tyhjä
+        } else {
+            name = userName.getText().toString();
+        }
+
+        //Tässä validoidaan painokenttä
+        if(userWeight.getText().toString().isEmpty()) {
+            //Tähän jotain koodia, jos painokenttä on tyhjä
+        } else {
+            weight = Double.parseDouble(userWeight.getText().toString());
+        }
+
+        //Tässä validoidaan pituuskenttä
+        if(userHeight.getText().toString().isEmpty()) {
+            //Tähän jotain koodia, jos pituuskenttä on tyhjä
+        } else {
+            height = Integer.parseInt(userHeight.getText().toString());
+        }
+
+        //Luodaan ensihavainnot
         Observation firstWeight = new WeightObservation(weight, getDate());
         Observation firstHeight = new HeightObservation(height, getDate());
 
@@ -75,8 +103,6 @@ public class AddUserActivity extends AppCompatActivity {
 
     public Date getDate() {
         Date nyt = new Date();
-
-        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
         return nyt;
     }
