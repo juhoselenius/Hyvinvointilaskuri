@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
@@ -17,8 +18,8 @@ import fi.mobts.hyvinvointilaskuri.classes.WeightObservation;
 
 public class AddObservationActivity extends AppCompatActivity {
     private EditText editTextAddWeight;
-    private Button buttonAddWeight;
     private double weight;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class AddObservationActivity extends AppCompatActivity {
             case "weight":
                 setContentView(R.layout.activity_add_weight);
                 editTextAddWeight = findViewById(R.id.editTextWeightObservation);
+                textView = findViewById(R.id.textViewWeightObservationValidate);
                 break;
             case "height":
                 setContentView(R.layout.activity_add_height);
@@ -41,11 +43,27 @@ public class AddObservationActivity extends AppCompatActivity {
     }
 
     public void addWeight(View v) {
+        boolean isValid = true;
         weight = Double.parseDouble(editTextAddWeight.getText().toString());
-        WeightObservation wObservation = new WeightObservation(weight, UserListGlobal.getInstance().getDate());
-        String user = UserListGlobal.getInstance().getCurrentUser();
-        UserListGlobal.getInstance().addObservation(user, wObservation);
+        if (editTextAddWeight.getText().toString().isEmpty()) {
+            textView.setVisibility(View.VISIBLE);
+            textView.setText("Kenttä ei voi olla tyhjä.");
+            isValid = false;
+        } else if (weight > 700 || weight < 1) {
+            textView.setVisibility(View.VISIBLE);
+            textView.setText("Paino pitää olla väliltä 1-700 kg.");
+            isValid = false;
+        } else {
+            textView.setVisibility(View.INVISIBLE);
+        }
+        if (isValid) {
+            WeightObservation wObservation = new WeightObservation(weight, UserListGlobal.getInstance().getDate());
+            String user = UserListGlobal.getInstance().getCurrentUser();
+            UserListGlobal.getInstance().addObservation(user, wObservation);
 
-        Log.d("Jorma", "Paino lisätty " + weight + " käyttäjälle " + user);
+            Log.d("Jorma", "Paino lisätty " + weight + " käyttäjälle " + user);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }
