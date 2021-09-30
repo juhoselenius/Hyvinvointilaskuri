@@ -2,11 +2,16 @@ package fi.mobts.hyvinvointilaskuri.classes;
 
 import java.util.Date;
 
-public class Observation {
+public interface Observation {
 
-    public Observation() {
+    public String getType();
 
-    }
+    public double getWeight();
+
+    public Date getDate();
+
+    public int getHeight();
+
 }
 
 

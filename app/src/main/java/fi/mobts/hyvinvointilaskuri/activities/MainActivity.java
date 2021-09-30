@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
@@ -20,7 +21,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private GraphView graphViewBMI;
     private Button addUserButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,4 +64,5 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
 
     }
+
 }

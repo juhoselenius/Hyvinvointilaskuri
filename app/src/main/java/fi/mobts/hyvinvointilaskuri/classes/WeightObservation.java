@@ -2,7 +2,7 @@ package fi.mobts.hyvinvointilaskuri.classes;
 
 import java.util.Date;
 
-public class WeightObservation extends Observation{
+public class WeightObservation implements Observation{
     private double weight;
     private Date date;
     private String type;
@@ -13,7 +13,19 @@ public class WeightObservation extends Observation{
         this.type = "weight";
     }
 
+    public int getHeight() {
+        return 0;
+    }
+
     public String getType() {
         return type;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

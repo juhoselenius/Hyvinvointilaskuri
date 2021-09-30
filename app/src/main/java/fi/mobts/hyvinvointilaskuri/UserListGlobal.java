@@ -28,6 +28,30 @@ public class UserListGlobal {
 
     }
 
+    public double getCurrentWeight() {
+        ArrayList<Observation> observations = usersHashMap.get(currentUser);
+        double currentWeight = 0.0;
+        for (int i = observations.size(); i > 0; i--) {
+            if (observations.get(i).getType().equals("weight")) {
+                currentWeight = observations.get(i).getWeight();
+                break;
+            }
+        }
+        return currentWeight;
+    }
+
+    public double getCurrentHeight() {
+        ArrayList<Observation> observations = usersHashMap.get(currentUser);
+        int currentHeight = 0;
+        for (int i = observations.size(); i > 0; i--) {
+            if (observations.get(i).getType().equals("height")) {
+                currentHeight = observations.get(i).getHeight();
+                break;
+            }
+        }
+        return currentHeight;
+    }
+
     public String getCurrentUser() {
         return currentUser;
     }
@@ -43,6 +67,7 @@ public class UserListGlobal {
             Log.d("Jorma", "Hashmappiin lisätty " + name);
         }
     }
+
     public Date getDate() {
         return new Date();
     }
