@@ -30,26 +30,36 @@ public class UserListGlobal {
 
     public double getCurrentWeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
-        double currentWeight = 0.0;
-        for (int i = observations.size(); i > 0; i--) {
+        double currentWeight = 1.0;
+        for (int i = observations.size() - 1; i >= 0; i--) {
             if (observations.get(i).getType().equals("weight")) {
                 currentWeight = observations.get(i).getWeight();
                 break;
             }
         }
+        Log.d("Jorma", "CurrentWeight " + currentWeight);
         return currentWeight;
     }
 
     public double getCurrentHeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
         int currentHeight = 0;
-        for (int i = observations.size(); i > 0; i--) {
+        for (int i = observations.size() - 1; i >= 0; i--) {
             if (observations.get(i).getType().equals("height")) {
                 currentHeight = observations.get(i).getHeight();
                 break;
             }
         }
+        Log.d("Jorma", "CurrentHeight " + currentHeight);
         return currentHeight;
+    }
+
+    public double currentBMI() {
+        double currentHeight = getCurrentHeight() / 100;
+        double currentBMI = getCurrentWeight() / (currentHeight * currentHeight);
+        Log.d("Jorma", "CurrentBMI" + currentBMI);
+        return currentBMI;
+
     }
 
     public String getCurrentUser() {

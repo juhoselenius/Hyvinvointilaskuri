@@ -2,7 +2,7 @@ package fi.mobts.hyvinvointilaskuri.classes;
 
 import java.util.Date;
 
-public class WeightObservation implements Observation{
+public class WeightObservation implements Observation {
     private double weight;
     private Date date;
     private String type;
