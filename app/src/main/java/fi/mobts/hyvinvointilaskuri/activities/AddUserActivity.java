@@ -8,14 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
-import fi.mobts.hyvinvointilaskuri.WeightDataGlobal;
 import fi.mobts.hyvinvointilaskuri.classes.HeightObservation;
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
 import fi.mobts.hyvinvointilaskuri.classes.User;
@@ -42,12 +38,6 @@ public class AddUserActivity extends AppCompatActivity {
         userGender = findViewById(R.id.rgGender);
 
         Intent intent = getIntent();
-
-        if(userGender.getCheckedRadioButtonId() == R.id.rbGenderMale) {
-            gender = "male";
-        } else if (userGender.getCheckedRadioButtonId() == R.id.rbGenderFemale) {
-            gender = "female";
-        }
 
         /*userGender.setOnClickListener(new View.OnClickListener() {
 
@@ -89,6 +79,13 @@ public class AddUserActivity extends AppCompatActivity {
             height = Integer.parseInt(userHeight.getText().toString());
         }
 
+        //Tallennetaan sukupuoli-valinta
+        if(userGender.getCheckedRadioButtonId() == R.id.rbGenderMale) {
+            gender = "male";
+        } else if (userGender.getCheckedRadioButtonId() == R.id.rbGenderFemale) {
+            gender = "female";
+        }
+
         //Luodaan ensihavainnot
         Observation firstWeight = new WeightObservation(weight, getDate());
         Observation firstHeight = new HeightObservation(height, getDate());
@@ -102,9 +99,7 @@ public class AddUserActivity extends AppCompatActivity {
     }
 
     public Date getDate() {
-        Date nyt = new Date();
-
-        return nyt;
+        return new Date();
     }
 
 }

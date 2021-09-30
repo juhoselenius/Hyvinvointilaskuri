@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/editTextWeight"
-        android:digits="0123456789.$"
+        android:digits="0123456789."
         android:layout_width="380dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
