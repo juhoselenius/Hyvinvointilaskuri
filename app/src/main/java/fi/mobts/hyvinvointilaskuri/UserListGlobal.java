@@ -81,4 +81,14 @@ public class UserListGlobal {
     public Date getDate() {
         return new Date();
     }
+
+    public ArrayList<String> getUsers() {
+        ArrayList<String> userList = new ArrayList<>();
+        userList.add("Lisää käyttäjä");
+        for(String user : usersHashMap.keySet()) {
+            userList.add(user);
+        }
+
+        return userList;
+    }
 }

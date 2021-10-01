@@ -67,4 +67,14 @@
         </LinearLayout>
     </ScrollView>
 
+    <Spinner
+        android:id="@+id/spinnerAddUser"
+        android:layout_width="156dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAddUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.844"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonAddUser" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
