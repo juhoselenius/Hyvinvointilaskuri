@@ -2,7 +2,9 @@ package fi.mobts.hyvinvointilaskuri.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,7 @@ public class AddObservationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Intent intent = getIntent();
         String chosenActivity = intent.getStringExtra(ObservationActivity.EXTRA);
         switch (chosenActivity) {
@@ -65,5 +68,20 @@ public class AddObservationActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        Log.d("HyteApp", "AddObservationActivity onPause()");
+
+        SharedPreferences prefPut = getSharedPreferences("AppPref", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefPut.edit();
+        prefEditor.putString("PrefKeyHashMap", UserListGlobal.getInstance().appDataToGson());
+
+        prefEditor.commit();
+
+        Log.d("HyteApp", "Tiedot tallennettu");
     }
 }

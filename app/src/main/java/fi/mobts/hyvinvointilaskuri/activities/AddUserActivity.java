@@ -2,7 +2,9 @@ package fi.mobts.hyvinvointilaskuri.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
@@ -31,7 +34,6 @@ public class AddUserActivity extends AppCompatActivity {
     private TextView validateName;
     private TextView validateHeight;
     private TextView validateWeight;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,5 +132,20 @@ public class AddUserActivity extends AppCompatActivity {
             Intent intentMain = new Intent(this, MainActivity.class);
             startActivity(intentMain);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        Log.d("HyteApp", "AddUserActivity onPause()");
+
+        SharedPreferences prefPut = getSharedPreferences("AppPref", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefPut.edit();
+        prefEditor.putString("PrefKeyHashMap", UserListGlobal.getInstance().appDataToGson());
+
+        prefEditor.commit();
+
+        Log.d("HyteApp", "Tiedot tallennettu");
     }
 }
