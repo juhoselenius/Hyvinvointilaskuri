@@ -8,38 +8,33 @@
 
     <Button
         android:id="@+id/buttonAddUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="205dp"
+        android:layout_height="45dp"
         android:onClick="userButton"
         android:text="@string/add_user"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAddUser" />
 
     <Button
         android:id="@+id/buttonAddObservation"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:onClick="observationButton"
         android:text="@string/add_observation"
         android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddUser" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="373dp"
-        android:layout_height="521dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="384dp"
+        android:layout_height="0dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/graphViewBMI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddObservation">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,23 +53,37 @@
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
-            <com.jjoe64.graphview.GraphView
-                android:id="@+id/graphViewBMI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="false" />
-
         </LinearLayout>
     </ScrollView>
 
     <Spinner
         android:id="@+id/spinnerAddUser"
-        android:layout_width="156dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonAddUser"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.844"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonAddUser" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphViewBMI"
+        android:layout_width="384dp"
+        android:layout_height="385dp"
+        android:layout_alignParentTop="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
+
+    <Button
+        android:id="@+id/buttonRemoveUser"
+        android:layout_width="205dp"
+        android:layout_height="45dp"
+        android:text="@string/remove_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonAddUser"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAddUser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,5 @@
     <string name="add_meal_calories">Ruoan kalorit?</string>
     <string name="button_newUser">Lisää</string>
     <string name="empty"> </string>
+    <string name="remove_user">- Poista käyttäjä</string>
 </resources>

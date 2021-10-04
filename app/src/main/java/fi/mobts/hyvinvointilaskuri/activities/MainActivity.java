@@ -45,6 +45,24 @@ public class MainActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView2);
         bmiValue = findViewById(R.id.textViewBmiValue);
         spinnerAddUser = findViewById(R.id.spinnerAddUser);
+        graphViewBMI = findViewById(R.id.graphViewBMI);
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 3),
+                new DataPoint(2, 4),
+                new DataPoint(3, 9),
+                new DataPoint(4, 6),
+                new DataPoint(5, 3),
+                new DataPoint(6, 6),
+                new DataPoint(7, 1),
+                new DataPoint(8, 2)
+        });
+
+        graphViewBMI.setTitle("Paino");
+        graphViewBMI.setTitleColor(R.color.purple_200);
+        graphViewBMI.setTitleTextSize(52);
+        graphViewBMI.addSeries(series);
 
         SharedPreferences prefGet = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
         lastSavedData = prefGet.getString("PrefKeyHashMap", "");
@@ -72,10 +90,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (!(UserListGlobal.getInstance().getCurrentUser() == null)) {
-            addUserButton.setText("Valittu käyttäjä: " + UserListGlobal.getInstance().getCurrentUser());
+            /*addUserButton.setText("Valittu käyttäjä: " + UserListGlobal.getInstance().getCurrentUser());*/
             addObservationButton.setVisibility(View.VISIBLE);
             scrollView.setVisibility(View.VISIBLE);
             bmiValue.setText(String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));
+
         }
     }
 
