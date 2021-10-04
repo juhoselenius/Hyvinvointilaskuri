@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAddUser.setAdapter(adapter);
 
-        if (!(UserListGlobal.getInstance().getCurrentUser() == null)) {
+        if (!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
             /*addUserButton.setText("Valittu: " + UserListGlobal.getInstance().getCurrentUser());*/
             addObservationButton.setVisibility(View.VISIBLE);
             spinnerGraphs.setVisibility(View.VISIBLE);
@@ -83,14 +83,13 @@ public class MainActivity extends AppCompatActivity {
             deleteUserButton.setVisibility(View.VISIBLE);
             bmiValue.setText(String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));
             deleteUserButton.setVisibility(View.VISIBLE);
+            Log.d("Jorma", "MainActivity VISIBLE " + !(UserListGlobal.getInstance().getUsers().equals("Ei käyttäjää")));
 
             spinnerAddUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     ArrayList<String> userList = UserListGlobal.getInstance().getUsers();
                     String newCurrentUser = userList.get(i);
-                    if (i == 0) {
-                    }
 
                     UserListGlobal.getInstance().setCurrentUser(newCurrentUser);
                     /*addUserButton.setText("Valittu: " + newCurrentUser);*/

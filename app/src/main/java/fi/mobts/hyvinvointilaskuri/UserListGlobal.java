@@ -39,26 +39,31 @@ public class UserListGlobal {
     public double getCurrentWeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
         double currentWeight = 1.0;
-        for (int i = observations.size() - 1; i >= 0; i--) {
-            if (observations.get(i).getType().equals("weight")) {
-                currentWeight = observations.get(i).getWeight();
-                break;
+        if (!(getUsers().contains("Ei käyttäjää"))) {
+            for (int i = observations.size() - 1; i >= 0; i--) {
+                if (observations.get(i).getType().equals("weight")) {
+                    currentWeight = observations.get(i).getWeight();
+                    break;
+                }
             }
+
+            Log.d("Jorma", "CurrentWeight " + currentWeight);
         }
-        Log.d("Jorma", "CurrentWeight " + currentWeight);
         return currentWeight;
     }
 
     public double getCurrentHeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
         int currentHeight = 0;
-        for (int i = observations.size() - 1; i >= 0; i--) {
-            if (observations.get(i).getType().equals("height")) {
-                currentHeight = observations.get(i).getHeight();
-                break;
+        if (!(getUsers().contains("Ei käyttäjää"))) {
+            for (int i = observations.size() - 1; i >= 0; i--) {
+                if (observations.get(i).getType().equals("height")) {
+                    currentHeight = observations.get(i).getHeight();
+                    break;
+                }
             }
+            Log.d("Jorma", "CurrentHeight " + currentHeight);
         }
-        Log.d("Jorma", "CurrentHeight " + currentHeight);
         return currentHeight;
     }
 
@@ -92,11 +97,12 @@ public class UserListGlobal {
 
     public ArrayList<String> getUsers() {
         ArrayList<String> userList = new ArrayList<>();
-        if (currentUser == null) {
-            userList.add("Ei käyttäjää");
-        }
+
         for(String user : usersHashMap.keySet()) {
             userList.add(user);
+        }
+        if (userList.size() ==  0){
+            userList.add("Ei käyttäjää");
         }
         Log.d("Jorma", "Luotu käyttäjälista" + userList);
         return userList;

@@ -118,14 +118,16 @@ public class AddUserActivity extends AppCompatActivity {
         }
 
         //Luodaan ensihavainnot
+        Log.d("Jorma", "Isvalid? " + isValid);
         if (isValid == true) {
             Observation firstWeight = new WeightObservation(weight, UserListGlobal.getInstance().getDate());
             Observation firstHeight = new HeightObservation(height, UserListGlobal.getInstance().getDate());
 
 
             User user = new User(name, weight, height, gender);
-            UserListGlobal.getInstance().setCurrentUser(name);
+            Log.d("Jorma", "Uusi käyttäjä " + name);
             UserListGlobal.getInstance().newUser(name);
+            UserListGlobal.getInstance().setCurrentUser(name);
             UserListGlobal.getInstance().addObservation(name, firstWeight);
             UserListGlobal.getInstance().addObservation(name, firstHeight);
 
