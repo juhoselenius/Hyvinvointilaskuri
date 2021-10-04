@@ -93,11 +93,13 @@ public class UserListGlobal {
 
     public ArrayList<String> getUsers() {
         ArrayList<String> userList = new ArrayList<>();
-        userList.add("Lisää käyttäjä");
+        if (currentUser == null) {
+            userList.add("Ei käyttäjää");
+        }
         for(String user : usersHashMap.keySet()) {
             userList.add(user);
         }
-
+        Log.d("Jorma", "Luotu käyttäjälista" + userList);
         return userList;
     }
 

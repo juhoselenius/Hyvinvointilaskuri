@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hyvinvointilaskuri">
         <activity
+            android:name=".activities.DeleteUserActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.AddObservationActivity"
             android:exported="true"
             android:parentActivityName=".activities.ObservationActivity" />
@@ -39,7 +42,6 @@
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
