@@ -2,7 +2,7 @@
     <string name="app_name">Hyvinvointilaskuri</string>
     <string name="add_user">+ Lisää käyttäjä</string>
     <string name="add_observation">+ Lisää havainto</string>
-    <string name="text_BMI">BMI</string>
+    <string name="text_BMI">Nykyinen BMI:</string>
     <string name="add_userName">Käyttäjänimi</string>
     <string name="add_userWeight">Paino (kg)</string>
     <string name="add_userHeight">Pituus (cm)</string>
@@ -17,5 +17,5 @@
     <string name="add_meal_calories">Ruoan kalorit?</string>
     <string name="button_newUser">Lisää</string>
     <string name="empty"> </string>
-    <string name="deleteUser">Poista käyttäjä</string>
+    <string name="buttonDeleteUser">Poista käyttäjä</string>
 </resources>
