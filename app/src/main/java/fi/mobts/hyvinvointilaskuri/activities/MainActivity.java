@@ -53,18 +53,26 @@ public class MainActivity extends AppCompatActivity {
 
         deleteUserButton = findViewById(R.id.buttonDeleteUser);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserListGlobal.getInstance().getUsers());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerAddUser.setAdapter(adapter);
+        /* Tällä saa tyhjennettyä emulaattorin SharedPreferences
+        SharedPreferences prefClear = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefClear.edit();
+        prefEditor.clear();
+        prefEditor.commit();*/
 
         SharedPreferences prefGet = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
         lastSavedData = prefGet.getString("PrefKeyHashMap", "");
+        String savedCurrentUser = prefGet.getString("PrefKeyCurrentUser", "");
 
-        //Tämä pätkä koodia kaataa sovelluksen käynnistyessä
-        /*if(!lastSavedData.equals("")) {
+        if(!lastSavedData.equals("")) {
+            Log.d("HyteApp", "Tiedot haettu: "+lastSavedData);
             HashMap <String, ArrayList<Observation>> savedData = UserListGlobal.getInstance().appDataFromGson(lastSavedData);
             UserListGlobal.getInstance().setUsersHashMap(savedData);
-        }*/
+            UserListGlobal.getInstance().setCurrentUser(savedCurrentUser);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserListGlobal.getInstance().getUsers());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAddUser.setAdapter(adapter);
 
         if (!(UserListGlobal.getInstance().getCurrentUser() == null)) {
             /*addUserButton.setText("Valittu: " + UserListGlobal.getInstance().getCurrentUser());*/
@@ -72,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             spinnerGraphs.setVisibility(View.VISIBLE);
             userLayout.setVisibility(View.VISIBLE);
             userGraphView.setVisibility(View.VISIBLE);
+            deleteUserButton.setVisibility(View.VISIBLE);
             bmiValue.setText(String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));
             deleteUserButton.setVisibility(View.VISIBLE);
 
@@ -135,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefPut = getSharedPreferences("AppPref", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
         prefEditor.putString("PrefKeyHashMap", UserListGlobal.getInstance().appDataToGson());
+        prefEditor.putString("PrefKeyCurrentUser", UserListGlobal.getInstance().getCurrentUser());
 
         prefEditor.commit();
 

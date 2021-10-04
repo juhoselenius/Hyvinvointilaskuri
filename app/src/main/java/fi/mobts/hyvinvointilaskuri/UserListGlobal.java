@@ -1,17 +1,17 @@
 package fi.mobts.hyvinvointilaskuri;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
+
 import android.util.Log;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
+import fi.mobts.hyvinvointilaskuri.classes.ObservationDeserializer;
 
 public class UserListGlobal {
     private static final UserListGlobal ourInstance = new UserListGlobal();
@@ -27,8 +27,7 @@ public class UserListGlobal {
 
     private UserListGlobal() {
         usersHashMap = new HashMap<>();
-        gson = new Gson();
-
+        gson = new GsonBuilder().registerTypeAdapter(Observation.class, new ObservationDeserializer()).create();
     }
 
     public void setCurrentUser(String currentUser) {
@@ -110,6 +109,8 @@ public class UserListGlobal {
     public String appDataToGson() {
         json = gson.toJson(usersHashMap);
 
+        Log.d("HyteApp", json);
+
         return json;
     }
 
@@ -121,8 +122,11 @@ public class UserListGlobal {
 
     public void removeUser(String user) {
         usersHashMap.remove(user);
-        setCurrentUser(null);
-
+        if(getUsers().size() == 0) {
+            currentUser = null;
+        } else {
+            setCurrentUser(getUsers().get(0));
+        }
 
     }
 

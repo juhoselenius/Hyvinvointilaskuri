@@ -2,7 +2,9 @@ package fi.mobts.hyvinvointilaskuri.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,5 +40,21 @@ private ListView lw;
     public void toMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        Log.d("HyteApp", "DeleteUserActivity onPause()");
+
+        SharedPreferences prefPut = getSharedPreferences("AppPref", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefPut.edit();
+        prefEditor.putString("PrefKeyHashMap", UserListGlobal.getInstance().appDataToGson());
+        prefEditor.putString("PrefKeyCurrentUser", UserListGlobal.getInstance().getCurrentUser());
+
+        prefEditor.commit();
+
+        Log.d("HyteApp", "Tiedot tallennettu");
     }
 }

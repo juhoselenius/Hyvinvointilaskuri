@@ -79,6 +79,7 @@ public class AddObservationActivity extends AppCompatActivity {
         SharedPreferences prefPut = getSharedPreferences("AppPref", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
         prefEditor.putString("PrefKeyHashMap", UserListGlobal.getInstance().appDataToGson());
+        prefEditor.putString("PrefKeyCurrentUser", UserListGlobal.getInstance().getCurrentUser());
 
         prefEditor.commit();
 

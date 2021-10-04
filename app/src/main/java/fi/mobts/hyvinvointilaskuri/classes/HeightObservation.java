@@ -2,7 +2,7 @@ package fi.mobts.hyvinvointilaskuri.classes;
 
 import java.util.Date;
 
-public class HeightObservation implements Observation {
+public class HeightObservation extends Observation {
     private int height;
     private Date date;
     private String type;
