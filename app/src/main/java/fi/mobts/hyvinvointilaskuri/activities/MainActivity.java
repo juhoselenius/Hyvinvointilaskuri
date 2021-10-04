@@ -29,13 +29,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private GraphView graphViewBMI;
+    private GraphView userGraphView;
     private Button addUserButton;
     private Button addObservationButton;
     private Button deleteUserButton;
     private TextView bmiValue;
-    private ScrollView scrollView;
     private Spinner spinnerAddUser;
+    private Spinner spinnerGraphs;
+    private LinearLayout userLayout;
     private String lastSavedData;
 
     @Override
@@ -44,9 +45,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addUserButton = findViewById(R.id.buttonAddUser);
         addObservationButton = findViewById(R.id.buttonAddObservation);
-        scrollView = findViewById(R.id.scrollView2);
         bmiValue = findViewById(R.id.textViewBmiValue);
         spinnerAddUser = findViewById(R.id.spinnerAddUser);
+        spinnerGraphs = findViewById(R.id.spinnerGraphs);
+        userLayout = findViewById(R.id.linearLayout);
+        userGraphView = findViewById(R.id.userGraphView);
+
         deleteUserButton = findViewById(R.id.buttonDeleteUser);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserListGlobal.getInstance().getUsers());
@@ -61,10 +65,13 @@ public class MainActivity extends AppCompatActivity {
             HashMap <String, ArrayList<Observation>> savedData = UserListGlobal.getInstance().appDataFromGson(lastSavedData);
             UserListGlobal.getInstance().setUsersHashMap(savedData);
         }*/
-        if (!(UserListGlobal.getInstance().getCurrentUser() == null || UserListGlobal.getInstance().getCurrentUser() == "Ei käyttäjää")) {
-            addUserButton.setText("Valittu: " + UserListGlobal.getInstance().getCurrentUser());
+
+        if (!(UserListGlobal.getInstance().getCurrentUser() == null)) {
+            /*addUserButton.setText("Valittu: " + UserListGlobal.getInstance().getCurrentUser());*/
             addObservationButton.setVisibility(View.VISIBLE);
-            scrollView.setVisibility(View.VISIBLE);
+            spinnerGraphs.setVisibility(View.VISIBLE);
+            userLayout.setVisibility(View.VISIBLE);
+            userGraphView.setVisibility(View.VISIBLE);
             bmiValue.setText(String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));
             deleteUserButton.setVisibility(View.VISIBLE);
 
@@ -77,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     UserListGlobal.getInstance().setCurrentUser(newCurrentUser);
-                    addUserButton.setText("Valittu: " + newCurrentUser);
+                    /*addUserButton.setText("Valittu: " + newCurrentUser);*/
                 }
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
