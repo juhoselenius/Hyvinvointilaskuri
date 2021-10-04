@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             HashMap <String, ArrayList<Observation>> savedData = UserListGlobal.getInstance().appDataFromGson(lastSavedData);
             UserListGlobal.getInstance().setUsersHashMap(savedData);
         }*/
-        if (!(UserListGlobal.getInstance().getCurrentUser() == null)) {
+        if (!(UserListGlobal.getInstance().getCurrentUser() == null || UserListGlobal.getInstance().getCurrentUser() == "Ei käyttäjää")) {
             addUserButton.setText("Valittu: " + UserListGlobal.getInstance().getCurrentUser());
             addObservationButton.setVisibility(View.VISIBLE);
             scrollView.setVisibility(View.VISIBLE);

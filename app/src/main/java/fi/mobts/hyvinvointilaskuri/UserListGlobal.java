@@ -119,5 +119,12 @@ public class UserListGlobal {
         return fromJson;
     }
 
+    public void removeUser(String user) {
+        usersHashMap.remove(user);
+        setCurrentUser(null);
+
+
+    }
+
 
 }
