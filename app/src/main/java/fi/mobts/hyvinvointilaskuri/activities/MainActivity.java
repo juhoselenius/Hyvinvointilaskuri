@@ -19,6 +19,7 @@ import android.widget.TextView;
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
+import fi.mobts.hyvinvointilaskuri.classes.User;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -51,10 +52,19 @@ public class MainActivity extends AppCompatActivity {
         spinnerGraphs = findViewById(R.id.spinnerGraphs);
         userLayout = findViewById(R.id.linearLayout);
         userGraphView = findViewById(R.id.userGraphView);
-
         deleteUserButton = findViewById(R.id.buttonDeleteUser);
+        userGraphView = findViewById(R.id.userGraphView);
 
-        /* Tällä saa tyhjennettyä emulaattorin SharedPreferences
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
+
+        });
+
+        userGraphView.setTitle("Paino");
+        userGraphView.setTitleColor(R.color.purple_200);
+        userGraphView.setTitleTextSize(48);
+        userGraphView.addSeries(series);
+
+        /*Tällä saa tyhjennettyä emulaattorin SharedPreferences
         SharedPreferences prefClear = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefClear.edit();
         prefEditor.clear();
