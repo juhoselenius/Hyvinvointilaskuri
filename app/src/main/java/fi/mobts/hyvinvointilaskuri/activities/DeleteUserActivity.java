@@ -31,7 +31,6 @@ private ListView lw;
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String user = UserListGlobal.getInstance().getUsers().get(i);
                 UserListGlobal.getInstance().removeUser(user);
-                Log.d("Jorma", "Removed " + user);
 
                 toMain();
             }

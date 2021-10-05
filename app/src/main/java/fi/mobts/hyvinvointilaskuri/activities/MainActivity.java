@@ -26,6 +26,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,13 +65,12 @@ public class MainActivity extends AppCompatActivity {
         String savedCurrentUser = prefGet.getString("PrefKeyCurrentUser", "");
 
         if(!lastSavedData.equals("")) {
-            Log.d("HyteApp", "Tiedot haettu: "+lastSavedData);
-            HashMap <String, ArrayList<Observation>> savedData = UserListGlobal.getInstance().appDataFromGson(lastSavedData);
+            LinkedHashMap<String, ArrayList<Observation>> savedData = UserListGlobal.getInstance().appDataFromGson(lastSavedData);
             UserListGlobal.getInstance().setUsersHashMap(savedData);
             UserListGlobal.getInstance().setCurrentUser(savedCurrentUser);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserListGlobal.getInstance().getUsers());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserListGlobal.getInstance().getDropdownUsers());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAddUser.setAdapter(adapter);
 
@@ -83,12 +83,11 @@ public class MainActivity extends AppCompatActivity {
             deleteUserButton.setVisibility(View.VISIBLE);
             bmiValue.setText(String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));
             deleteUserButton.setVisibility(View.VISIBLE);
-            Log.d("Jorma", "MainActivity VISIBLE " + !(UserListGlobal.getInstance().getUsers().equals("Ei käyttäjää")));
 
             spinnerAddUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    ArrayList<String> userList = UserListGlobal.getInstance().getUsers();
+                    ArrayList<String> userList = UserListGlobal.getInstance().getDropdownUsers();
                     String newCurrentUser = userList.get(i);
 
                     UserListGlobal.getInstance().setCurrentUser(newCurrentUser);
@@ -96,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
+
                 }
             });
         }
@@ -131,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddUserActivity.class);
 
         startActivity(intent);
-        Log.d("HyteApp", "Siirrytty lisäämään käyttäjää");
     }
 
     @Override
@@ -146,9 +145,6 @@ public class MainActivity extends AppCompatActivity {
         prefEditor.putString("PrefKeyCurrentUser", UserListGlobal.getInstance().getCurrentUser());
 
         prefEditor.commit();
-
-        Log.d("HyteApp", "Tiedot tallennettu");
-
     }
 
 }

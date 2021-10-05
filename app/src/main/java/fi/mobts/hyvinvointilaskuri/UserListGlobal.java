@@ -9,14 +9,15 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
 import fi.mobts.hyvinvointilaskuri.classes.ObservationDeserializer;
 
 public class UserListGlobal {
     private static final UserListGlobal ourInstance = new UserListGlobal();
-    private static final TypeToken token = new TypeToken<HashMap<String,ArrayList<Observation>>>(){};
-    private HashMap<String, ArrayList<Observation>> usersHashMap;
+    private static final TypeToken token = new TypeToken<LinkedHashMap<String,ArrayList<Observation>>>(){};
+    private LinkedHashMap<String, ArrayList<Observation>> usersHashMap;
     private String currentUser;
     private Gson gson;
     private String json;
@@ -26,14 +27,13 @@ public class UserListGlobal {
     }
 
     private UserListGlobal() {
-        usersHashMap = new HashMap<>();
+        usersHashMap = new LinkedHashMap<>();
         gson = new GsonBuilder().registerTypeAdapter(Observation.class, new ObservationDeserializer()).create();
     }
 
     public void setCurrentUser(String currentUser) {
         this.currentUser = currentUser;
         Log.d("Jorma", "Käyttäjä asetettu " + currentUser);
-
     }
 
     public double getCurrentWeight() {
@@ -46,8 +46,6 @@ public class UserListGlobal {
                     break;
                 }
             }
-
-            Log.d("Jorma", "CurrentWeight " + currentWeight);
         }
         return currentWeight;
     }
@@ -62,7 +60,6 @@ public class UserListGlobal {
                     break;
                 }
             }
-            Log.d("Jorma", "CurrentHeight " + currentHeight);
         }
         return currentHeight;
     }
@@ -70,9 +67,7 @@ public class UserListGlobal {
     public double currentBMI() {
         double currentHeight = getCurrentHeight() / 100;
         double currentBMI = getCurrentWeight() / (currentHeight * currentHeight);
-        Log.d("Jorma", "CurrentBMI" + currentBMI);
         return currentBMI;
-
     }
 
     public String getCurrentUser() {
@@ -81,13 +76,13 @@ public class UserListGlobal {
 
     public void addObservation(String name, Observation observation) {
         usersHashMap.get(name).add(observation);
-        Log.d("Jorma", "Havainto lisätty " + name);
     }
 
     public void newUser(String name) {
         if (!usersHashMap.containsKey(name)) {
             usersHashMap.put(name, new ArrayList<>());
             Log.d("Jorma", "Hashmappiin lisätty " + name);
+            Log.d("Jorma", "Hasmapissa nyt avaimet: "+ usersHashMap.keySet());
         }
     }
 
@@ -104,24 +99,34 @@ public class UserListGlobal {
         if (userList.size() ==  0){
             userList.add("Ei käyttäjää");
         }
-        Log.d("Jorma", "Luotu käyttäjälista" + userList);
         return userList;
     }
 
-    public void setUsersHashMap(HashMap<String, ArrayList<Observation>> usersHashMap) {
+    public ArrayList<String> getDropdownUsers() {
+        ArrayList<String> userListTemp = new ArrayList<>(usersHashMap.keySet());
+        ArrayList<String> userList = new ArrayList<>();
+
+        for(int i = userListTemp.size()-1; i >= 0; i--) {
+            userList.add(userListTemp.get(i));
+        }
+        if (userList.size() ==  0){
+            userList.add("Ei käyttäjää");
+        }
+        return userList;
+    }
+
+    public void setUsersHashMap(LinkedHashMap<String, ArrayList<Observation>> usersHashMap) {
         this.usersHashMap = usersHashMap;
     }
 
     public String appDataToGson() {
         json = gson.toJson(usersHashMap);
 
-        Log.d("HyteApp", json);
-
         return json;
     }
 
-    public HashMap<String, ArrayList<Observation>> appDataFromGson(String json) {
-        HashMap<String, ArrayList<Observation>> fromJson = gson.fromJson(json, token.getType());
+    public LinkedHashMap<String, ArrayList<Observation>> appDataFromGson(String json) {
+        LinkedHashMap<String, ArrayList<Observation>> fromJson = gson.fromJson(json, token.getType());
 
         return fromJson;
     }
