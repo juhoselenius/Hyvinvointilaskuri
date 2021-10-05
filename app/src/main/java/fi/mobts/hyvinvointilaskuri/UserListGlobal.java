@@ -52,9 +52,10 @@ public class UserListGlobal {
 
     public ArrayList<Double> getWeightsList(String userName) {
         ArrayList<Observation> observations = usersHashMap.get(userName);
+        Log.d("Jorma", "Painolistan pituus: "+ observations.size());
         ArrayList<Double> weightList = new ArrayList<>();
         for(int i = 0; i < observations.size(); i++) {
-            if(observations.get(i).getType() == "height") {
+            if(observations.get(i).getType().equals("weight")) {
                 weightList.add(observations.get(i).getWeight());
             }
         }
@@ -63,9 +64,10 @@ public class UserListGlobal {
 
     public ArrayList<Date> getWeightDatesList(String userName) {
         ArrayList<Observation> observations = usersHashMap.get(userName);
+        Log.d("Jorma", "Päivämäärälistan pituus: "+ observations.size());
         ArrayList<Date> weightDateList = new ArrayList<>();
         for(int i = 0; i < observations.size(); i++) {
-            if(observations.get(i).getType() == "height") {
+            if(observations.get(i).getType().equals("weight")) {
                 weightDateList.add(observations.get(i).getDate());
             }
         }
