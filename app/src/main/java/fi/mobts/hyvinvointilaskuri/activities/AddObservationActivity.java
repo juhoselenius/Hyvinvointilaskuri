@@ -8,14 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
-import fi.mobts.hyvinvointilaskuri.WeightDataGlobal;
-import fi.mobts.hyvinvointilaskuri.classes.Observation;
 import fi.mobts.hyvinvointilaskuri.classes.WeightObservation;
 
 public class AddObservationActivity extends AppCompatActivity {

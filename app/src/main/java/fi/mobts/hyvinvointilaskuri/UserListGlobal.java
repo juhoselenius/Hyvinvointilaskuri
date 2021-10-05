@@ -50,6 +50,28 @@ public class UserListGlobal {
         return currentWeight;
     }
 
+    public ArrayList<Double> getWeightsList(String userName) {
+        ArrayList<Observation> observations = usersHashMap.get(userName);
+        ArrayList<Double> weightList = new ArrayList<>();
+        for(int i = 0; i < observations.size(); i++) {
+            if(observations.get(i).getType() == "height") {
+                weightList.add(observations.get(i).getWeight());
+            }
+        }
+        return weightList;
+    }
+
+    public ArrayList<Date> getWeightDatesList(String userName) {
+        ArrayList<Observation> observations = usersHashMap.get(userName);
+        ArrayList<Date> weightDateList = new ArrayList<>();
+        for(int i = 0; i < observations.size(); i++) {
+            if(observations.get(i).getType() == "height") {
+                weightDateList.add(observations.get(i).getDate());
+            }
+        }
+        return weightDateList;
+    }
+
     public double getCurrentHeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
         int currentHeight = 0;

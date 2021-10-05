@@ -18,14 +18,18 @@ import android.widget.TextView;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
+import fi.mobts.hyvinvointilaskuri.classes.GraphViewFun;
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
 import fi.mobts.hyvinvointilaskuri.classes.User;
 
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerGraphs;
     private LinearLayout userLayout;
     private String lastSavedData;
+    private SimpleDateFormat sdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +59,6 @@ public class MainActivity extends AppCompatActivity {
         userGraphView = findViewById(R.id.userGraphView);
         deleteUserButton = findViewById(R.id.buttonDeleteUser);
         userGraphView = findViewById(R.id.userGraphView);
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-        });
-
-        userGraphView.setTitle("Paino");
-        userGraphView.setTitleColor(R.color.purple_200);
-        userGraphView.setTitleTextSize(48);
-        userGraphView.addSeries(series);
 
         /*Tällä saa tyhjennettyä emulaattorin SharedPreferences
         SharedPreferences prefClear = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
@@ -110,7 +106,27 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        if(!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
+            sdf = new SimpleDateFormat("dd.MM.yyyy");
+            GraphViewFun gvf = new GraphViewFun();
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(gvf.getweightDatapoints());
 
+            userGraphView.setTitle("Paino");
+            userGraphView.setTitleColor(R.color.purple_200);
+            userGraphView.setTitleTextSize(48);
+            userGraphView.addSeries(series);
+            Log.d("Jorma", "Datapointit: "+ series);
+
+            userGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                public String formatLabel(double value, boolean isValueX) {
+                    if(isValueX) {
+                        return sdf.format(new Date((long) value));
+                    } else {
+                        return super.formatLabel(value, isValueX);
+                    }
+                }
+            });
+        }
     }
 
         /*graphViewBMI = findViewById(R.id.graphViewBMI);
