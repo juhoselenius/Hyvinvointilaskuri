@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
-            sdf = new SimpleDateFormat("dd.MM.yyyy");
+            sdf = new SimpleDateFormat("dd.MM.");
             GraphViewFun gvf = new GraphViewFun();
             LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(gvf.getweightDatapoints());
 
@@ -115,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
             userGraphView.setTitleColor(R.color.purple_200);
             userGraphView.setTitleTextSize(48);
             userGraphView.addSeries(series);
+            userGraphView.getViewport().setScalable(true);
+            userGraphView.getViewport().setScrollable(true);
+            userGraphView.getViewport().setScalableY(true);
+            userGraphView.getViewport().setScrollableY(true);
             Log.d("Jorma", "Datapointit: "+ series);
 
             userGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
