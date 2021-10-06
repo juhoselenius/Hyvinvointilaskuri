@@ -130,12 +130,17 @@ public class UserListGlobal {
         ArrayList<String> userListTemp = new ArrayList<>(usersHashMap.keySet());
         ArrayList<String> userList = new ArrayList<>();
 
-        for(int i = userListTemp.size()-1; i >= 0; i--) {
-            userList.add(userListTemp.get(i));
-        }
-        if (userList.size() ==  0){
+        if(userListTemp.size() == 0) {
             userList.add("Ei käyttäjää");
+        } else {
+            userList.add(currentUser);
+            for(int i = userListTemp.size()-1; i >= 0; i--) {
+                if (!userListTemp.get(i).equals(currentUser)) {
+                    userList.add(userListTemp.get(i));
+                }
+            }
         }
+
         return userList;
     }
 
