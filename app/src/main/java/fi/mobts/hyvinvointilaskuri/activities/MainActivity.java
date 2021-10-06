@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Jorma", "Nykyinen käyttäjä: "+UserListGlobal.getInstance().getCurrentUser());
 
                     UserListGlobal.getInstance().setCurrentUser(newCurrentUser);
+                    bmiValue.setText(String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));
 
                     Log.d("Jorma", "Nykyinen käyttäjä: "+UserListGlobal.getInstance().getCurrentUser());
 
