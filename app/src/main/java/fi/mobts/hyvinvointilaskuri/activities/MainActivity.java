@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     userGraphView.setTitle("Paino");
                     userGraphView.setTitleColor(R.color.purple_200);
                     userGraphView.setTitleTextSize(48);
+                    userGraphView.addSeries(series);
                     userGraphView.getViewport().setScalable(true);
                     userGraphView.getViewport().setScrollable(true);
                     userGraphView.getViewport().setScalableY(true);
