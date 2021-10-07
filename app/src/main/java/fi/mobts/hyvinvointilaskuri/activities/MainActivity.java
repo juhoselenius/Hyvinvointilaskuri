@@ -60,16 +60,16 @@ public class MainActivity extends AppCompatActivity {
         userGraphView = findViewById(R.id.userGraphView);
         deleteUserButton = findViewById(R.id.buttonDeleteUser);
         userGraphView = findViewById(R.id.userGraphView);
-
-        /*Tällä saa tyhjennettyä emulaattorin SharedPreferences
+        /*
         SharedPreferences prefClear = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefClear.edit();
         prefEditor.clear();
-        prefEditor.commit();*/
+        prefEditor.commit();
+        */
 
         SharedPreferences prefGet = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
-        lastSavedData = prefGet.getString("PrefKeyHashMap", "");
-        String savedCurrentUser = prefGet.getString("PrefKeyCurrentUser", "");
+        lastSavedData = prefGet.getString("PrefKeyHashMap", "{}");
+        String savedCurrentUser = prefGet.getString("PrefKeyCurrentUser", "Ei käyttäjää");
 
         if(!lastSavedData.equals("")) {
             LinkedHashMap<String, ArrayList<Observation>> savedData = UserListGlobal.getInstance().appDataFromGson(lastSavedData);
