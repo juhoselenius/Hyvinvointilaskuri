@@ -94,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
             spinnerAddUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    ArrayList<String> userList = UserListGlobal.getInstance().getDropdownUsers();
+                    ArrayList<String> userList = UserListGlobal.getInstance().getUserListSnapShot();
                     String newCurrentUser = userList.get(i);
 
-                    Log.d("Jorma", "Nykyinen käyttäjä: "+UserListGlobal.getInstance().getCurrentUser());
+                    Log.d("Jorma", userList.get(i) + " paikalla " + i);
 
                     UserListGlobal.getInstance().setCurrentUser(newCurrentUser);
                     bmiValue.setText(String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));

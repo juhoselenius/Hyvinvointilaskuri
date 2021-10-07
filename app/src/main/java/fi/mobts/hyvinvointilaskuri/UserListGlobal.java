@@ -1,6 +1,7 @@
 package fi.mobts.hyvinvointilaskuri;
 
 
+import android.service.voice.VoiceInteractionSession;
 import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,6 +22,7 @@ public class UserListGlobal {
     private String currentUser;
     private Gson gson;
     private String json;
+    private ArrayList<String> userListSnapShot;
 
     public static UserListGlobal getInstance() {
         return ourInstance;
@@ -28,6 +30,7 @@ public class UserListGlobal {
 
     private UserListGlobal() {
         usersHashMap = new LinkedHashMap<>();
+        userListSnapShot = new ArrayList<>();
         gson = new GsonBuilder().registerTypeAdapter(Observation.class, new ObservationDeserializer()).create();
     }
 
@@ -151,8 +154,13 @@ public class UserListGlobal {
         if (count > 1) {
             userList.remove(removeIndex);
         }
-
+        Log.d("Jorma", "käyttäjälista haettu");
+        userListSnapShot = userList;
         return userList;
+    }
+
+    public ArrayList<String> getUserListSnapShot() {
+        return userListSnapShot;
     }
 
     public void setUsersHashMap(LinkedHashMap<String, ArrayList<Observation>> usersHashMap) {
