@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -107,14 +108,20 @@ public class MainActivity extends AppCompatActivity {
                     GraphViewFun gvf = new GraphViewFun();
                     LineGraphSeries<DataPoint> series = new LineGraphSeries<>(gvf.getweightDatapoints());
 
+                    series.setColor(Color.BLUE);
+                    series.setDrawDataPoints(true);
+                    series.setDataPointsRadius(10);
+                    series.setThickness(8);
+
                     userGraphView.setTitle("Paino");
                     userGraphView.setTitleColor(R.color.purple_200);
                     userGraphView.setTitleTextSize(48);
+                    userGraphView.removeAllSeries();
                     userGraphView.addSeries(series);
-                    userGraphView.getViewport().setScalable(true);
-                    userGraphView.getViewport().setScrollable(true);
-                    userGraphView.getViewport().setScalableY(true);
-                    userGraphView.getViewport().setScrollableY(true);
+                    //userGraphView.getViewport().setScalable(true);
+                    //userGraphView.getViewport().setScrollable(true);
+                    //userGraphView.getViewport().setScalableY(true);
+                    //userGraphView.getViewport().setScrollableY(true);
                     Log.d("Jorma", "Datapointit: "+ series);
 
                     userGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {

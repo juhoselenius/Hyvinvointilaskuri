@@ -36,4 +36,15 @@ public class GraphViewFun {
 
         return weightDataPoints;
     }
+
+
+    //Metodi, jolla graafin saa sovitettua näkymään, mutta vaatii listojen maksimi ja minimit
+    /*public void setAxisBoundsManual(GraphView gv) {
+        gv.getViewport().setYAxisBoundsManual(true);
+        gv.getViewport().setMaxY();
+        gv.getViewport().setMinY();
+
+        gv.getViewport().setMaxX();
+        gv.getViewport().setMinX();
+    }*/
 }

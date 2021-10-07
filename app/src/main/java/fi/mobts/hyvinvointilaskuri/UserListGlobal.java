@@ -133,11 +133,8 @@ public class UserListGlobal {
         if(userListTemp.size() == 0) {
             userList.add("Ei käyttäjää");
         } else {
-            userList.add(currentUser);
             for(int i = userListTemp.size()-1; i >= 0; i--) {
-                if (!userListTemp.get(i).equals(currentUser)) {
-                    userList.add(userListTemp.get(i));
-                }
+                userList.add(userListTemp.get(i));
             }
         }
 
