@@ -119,12 +119,14 @@ public class MainActivity extends AppCompatActivity {
                     userGraphView.removeAllSeries();
                     userGraphView.addSeries(series);
 
-                    userGraphView.getViewport().setXAxisBoundsManual(true);
-                    userGraphView.getViewport().setYAxisBoundsManual(true);
-                    userGraphView.getViewport().setMaxX(UserListGlobal.getInstance().getMaxWeightDate());
-                    userGraphView.getViewport().setMinX(UserListGlobal.getInstance().getMinWeightDate());
-                    userGraphView.getViewport().setMaxY(UserListGlobal.getInstance().getMaxWeight());
-                    userGraphView.getViewport().setMinY(UserListGlobal.getInstance().getMinWeight());
+                    if(UserListGlobal.getInstance().getWeightsList(UserListGlobal.getInstance().getCurrentUser()).size() > 1) {
+                        userGraphView.getViewport().setXAxisBoundsManual(true);
+                        userGraphView.getViewport().setYAxisBoundsManual(true);
+                        userGraphView.getViewport().setMaxX(UserListGlobal.getInstance().getMaxWeightDate());
+                        userGraphView.getViewport().setMinX(UserListGlobal.getInstance().getMinWeightDate());
+                        userGraphView.getViewport().setMaxY(UserListGlobal.getInstance().getMaxWeight());
+                        userGraphView.getViewport().setMinY(UserListGlobal.getInstance().getMinWeight());
+                    }
 
                     //userGraphView.getViewport().setScalable(true);
                     //userGraphView.getViewport().setScrollable(true);
