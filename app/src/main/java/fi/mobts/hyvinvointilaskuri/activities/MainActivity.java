@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerAddUser.setAdapter(adapter);
 
         if (!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
-            /*addUserButton.setText("Valittu: " + UserListGlobal.getInstance().getCurrentUser());*/
             addObservationButton.setVisibility(View.VISIBLE);
             spinnerGraphs.setVisibility(View.VISIBLE);
             userLayout.setVisibility(View.VISIBLE);
@@ -127,10 +126,6 @@ public class MainActivity extends AppCompatActivity {
                         userGraphView.getViewport().setMinY(UserListGlobal.getInstance().getMinWeight());
                     }
 
-                    //userGraphView.getViewport().setScalable(true);
-                    //userGraphView.getViewport().setScrollable(true);
-                    //userGraphView.getViewport().setScalableY(true);
-                    //userGraphView.getViewport().setScrollableY(true);
                     Log.d("Jorma", "Datapointit: "+ series);
 
                     userGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
@@ -149,32 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
-        /*if(!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
-            sdf = new SimpleDateFormat("dd.MM.");
-            GraphViewFun gvf = new GraphViewFun();
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(gvf.getweightDatapoints());
-
-            userGraphView.setTitle("Paino");
-            userGraphView.setTitleColor(R.color.purple_200);
-            userGraphView.setTitleTextSize(48);
-            userGraphView.addSeries(series);
-            userGraphView.getViewport().setScalable(true);
-            userGraphView.getViewport().setScrollable(true);
-            userGraphView.getViewport().setScalableY(true);
-            userGraphView.getViewport().setScrollableY(true);
-            Log.d("Jorma", "Datapointit: "+ series);
-
-            userGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                public String formatLabel(double value, boolean isValueX) {
-                    if(isValueX) {
-                        return sdf.format(new Date((long) value));
-                    } else {
-                        return super.formatLabel(value, isValueX);
-                    }
-                }
-            });
-        }*/
     }
 
     public void observationButton(View v) {
