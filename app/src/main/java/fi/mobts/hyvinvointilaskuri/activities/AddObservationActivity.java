@@ -44,7 +44,9 @@ public class AddObservationActivity extends AppCompatActivity {
 
     public void addWeight(View v) {
         boolean isValid = true;
-        weight = Double.parseDouble(editTextAddWeight.getText().toString());
+        if (!editTextAddWeight.getText().toString().isEmpty()) {
+            weight = Double.parseDouble(editTextAddWeight.getText().toString());
+        }
         if (editTextAddWeight.getText().toString().isEmpty()) {
             textView.setVisibility(View.VISIBLE);
             textView.setText("Kenttä ei voi olla tyhjä.");
@@ -61,7 +63,7 @@ public class AddObservationActivity extends AppCompatActivity {
             String user = UserListGlobal.getInstance().getCurrentUser();
             UserListGlobal.getInstance().addObservation(user, wObservation);
 
-            Log.d("Jorma", "Paino lisätty " + weight + " käyttäjälle " + user);
+            Log.d("Jorma", isValid + "Paino lisätty " + weight + " käyttäjälle " + user);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

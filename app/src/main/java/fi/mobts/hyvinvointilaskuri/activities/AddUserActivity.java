@@ -70,8 +70,10 @@ public class AddUserActivity extends AppCompatActivity {
     public void userAdded(View v) {
 
         boolean isValid = true;
-        weight = Double.parseDouble(userWeight.getText().toString());
-        height = Integer.parseInt(userHeight.getText().toString());
+        if (!(userWeight.getText().toString().isEmpty() || userHeight.getText().toString().isEmpty())) {
+            weight = Double.parseDouble(userWeight.getText().toString());
+            height = Integer.parseInt(userHeight.getText().toString());
+        }
 
         //Tässä validoidaan nimikenttä
         if (userName.getText().toString().isEmpty()) {

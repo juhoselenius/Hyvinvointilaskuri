@@ -129,6 +129,9 @@ public class UserListGlobal {
     public ArrayList<String> getDropdownUsers() {
         ArrayList<String> userListTemp = new ArrayList<>(usersHashMap.keySet());
         ArrayList<String> userList = new ArrayList<>();
+        if (!userList.equals("Ei käyttäjää")) {
+            userList.add(currentUser);
+        }
 
         if(userListTemp.size() == 0) {
             userList.add("Ei käyttäjää");
@@ -136,6 +139,17 @@ public class UserListGlobal {
             for(int i = userListTemp.size()-1; i >= 0; i--) {
                 userList.add(userListTemp.get(i));
             }
+        }
+        int removeIndex = 0;
+        int count = 0;
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).equals(currentUser)) {
+                count++;
+                removeIndex = i;
+            }
+        }
+        if (count > 1) {
+            userList.remove(removeIndex);
         }
 
         return userList;
