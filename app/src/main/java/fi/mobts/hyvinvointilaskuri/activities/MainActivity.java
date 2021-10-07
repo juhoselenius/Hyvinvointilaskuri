@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                     sdf = new SimpleDateFormat("dd.MM.");
                     GraphViewFun gvf = new GraphViewFun();
                     LineGraphSeries<DataPoint> series = new LineGraphSeries<>(gvf.getweightDatapoints());
-
                     series.setColor(Color.BLUE);
                     series.setDrawDataPoints(true);
                     series.setDataPointsRadius(10);
