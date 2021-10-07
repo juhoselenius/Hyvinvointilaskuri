@@ -77,6 +77,60 @@ public class UserListGlobal {
         return weightDateList;
     }
 
+    public double getMaxWeight() {
+        ArrayList<Double> weights = getWeightsList(currentUser);
+        double maxWeight = 0;
+        for(double i : weights) {
+            if(maxWeight< i) {
+                maxWeight = i;
+            }
+        }
+
+        return maxWeight;
+    }
+
+    public double getMinWeight() {
+        ArrayList<Double> weights = getWeightsList(currentUser);
+        double minWeight = 1000;
+        for(double i : weights) {
+            if(minWeight > i) {
+                minWeight = i;
+            }
+        }
+
+        return minWeight;
+    }
+
+    public double getMaxWeightDate() {
+        ArrayList<Date> dates = getWeightDatesList(currentUser);
+        Date maxDate = new Date(Long.MIN_VALUE);
+        for(Date i : dates) {
+            if(i.after(maxDate)) {
+                maxDate = i;
+            }
+        }
+
+        long tempLong = maxDate.getTime();
+        double newMaxDate = (double) tempLong;
+
+        return newMaxDate;
+    }
+
+    public double getMinWeightDate() {
+        ArrayList<Date> dates = getWeightDatesList(currentUser);
+        Date minDate = new Date(Long.MAX_VALUE);
+        for(Date i : dates) {
+            if(i.before(minDate)) {
+                minDate = i;
+            }
+        }
+
+        long tempLong = minDate.getTime();
+        double newMinDate = (double) tempLong;
+
+        return newMinDate;
+    }
+
     public double getCurrentHeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
         int currentHeight = 0;
