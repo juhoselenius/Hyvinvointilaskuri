@@ -1,7 +1,6 @@
 package fi.mobts.hyvinvointilaskuri;
 
 
-import android.service.voice.VoiceInteractionSession;
 import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,11 +8,17 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
 import fi.mobts.hyvinvointilaskuri.classes.ObservationDeserializer;
+
+/**
+ * The class <code>UserListGlobal</code> is used to create the singleton of the application.
+ * It is used as a run-time data bank and also for saving the data, when the application is closed or interrupted.
+ * @author Tommi Uponen, Olli Varila and Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
 
 public class UserListGlobal {
     private static final UserListGlobal ourInstance = new UserListGlobal();
@@ -28,16 +33,29 @@ public class UserListGlobal {
         return ourInstance;
     }
 
+    /**
+     * Creates the <code>UserListGlobal</code> singleton.
+     */
     private UserListGlobal() {
         usersHashMap = new LinkedHashMap<>();
         userListSnapShot = new ArrayList<>();
         gson = new GsonBuilder().registerTypeAdapter(Observation.class, new ObservationDeserializer()).create();
     }
 
+    /**
+     * The method sets the given user as the current user.
+     * @param currentUser The current user that will be set.
+     */
+
     public void setCurrentUser(String currentUser) {
         this.currentUser = currentUser;
         Log.d("Jorma", "Käyttäjä asetettu " + currentUser);
     }
+
+    /**
+     * The method fetches the most recent weight data.
+     * @return most recent weight data.
+     */
 
     public double getCurrentWeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
@@ -52,6 +70,12 @@ public class UserListGlobal {
         }
         return currentWeight;
     }
+
+    /**
+     * The method fetches all the weights of a specific user.
+     * @param userName The user name, whose weights are to be fetched.
+     * @return an arraylist of weights.
+     */
 
     public ArrayList<Double> getWeightsList(String userName) {
         ArrayList<Observation> observations = usersHashMap.get(userName);

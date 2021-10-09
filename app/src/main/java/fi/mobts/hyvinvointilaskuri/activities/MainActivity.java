@@ -40,6 +40,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * The class <code>MainActivity</code> is the main activity of the application.
+ * It serves as the main user interface for the application from where other activities are launched from.
+ * @author Tommi Uponen, Olli Varila and Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
+
 public class MainActivity extends AppCompatActivity {
     private GraphView userGraphView;
     private Button addUserButton;
@@ -51,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout userLayout;
     private String lastSavedData;
     private SimpleDateFormat sdf;
+
+    /**
+     * The method is used to create the activity and sets up the UI layout and components.
+     * It also fetches the previously saved data from the memory.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,11 +171,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * The method is used to access <code>ObservationActivity</code>.
+     * It is called, when the user taps the Add Observation button.
+     * @param v The view of the activity.
+     */
+
     public void observationButton(View v) {
         Intent intent = new Intent(this, ObservationActivity.class);
 
         startActivity(intent);
     }
+
+    /**
+     * The method is used to access <code>DeleteUserActivity</code>.
+     * It is called, when the user taps the Delete Observation button.
+     * @param v The view of the activity.
+     */
 
     public void deleteUserButton(View v) {
         Intent intent = new Intent(this, DeleteUserActivity.class);
@@ -171,17 +195,33 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * The method is used to access <code>AddUserActivity</code>.
+     * It is called, when the user taps the Add User button.
+     * @param v The view of the activity.
+     */
+
     public void userButton(View v) {
         Intent intent = new Intent(this, AddUserActivity.class);
 
         startActivity(intent);
     }
 
+    /**
+     * The method is used to access <code>BodyMassIndexInfoActivity</code>.
+     * It is called, when the user taps the Body Mass Index textview.
+     * @param v The view of the activity.
+     */
+
     public void bmiText(View v) {
         Intent intent = new Intent(this, BodyMassIndexInfoActivity.class);
 
         startActivity(intent);
     }
+
+    /**
+     * The method is used to save application data, when application is paused.
+     */
 
     @Override
     protected void onPause() {

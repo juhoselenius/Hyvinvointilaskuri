@@ -9,20 +9,26 @@ import android.widget.TextView;
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 
-public class BodyMassIndexInfoActivity extends AppCompatActivity {
-    private TextView bmiText;
-    private TextView bmiInfo;
+/**
+ * The class <code>BodyMassIndexInfoActivity</code> is an application activity, where BMI info of the current user can be viewed.
+ * @author Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
 
+public class BodyMassIndexInfoActivity extends AppCompatActivity {
+
+    /**
+     * The method is used to create the activity and set up the UI layout and components.
+     * It shows the table for BMI ranges, current BMI and where it is situated in the table.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_mass_index_info);
 
-        bmiText = findViewById(R.id.textViewBodyMassIndex);
-        bmiInfo = findViewById(R.id.textViewBmiInfo);
-
-        Intent intent = getIntent();
+        TextView bmiText = findViewById(R.id.textViewBodyMassIndex);
+        TextView bmiInfo = findViewById(R.id.textViewBmiInfo);
 
         bmiText.setText("Nykyinen BMI: "+String.format("%.3g%n", UserListGlobal.getInstance().currentBMI()));
 

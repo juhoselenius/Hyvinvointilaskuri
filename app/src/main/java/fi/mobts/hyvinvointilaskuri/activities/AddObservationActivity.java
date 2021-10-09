@@ -101,6 +101,10 @@ public class AddObservationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * The method is used to save application data, when application is paused.
+     */
+
     @Override
     protected void onPause() {
         super.onPause();
