@@ -49,6 +49,7 @@ public class AddUserActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        //luultavasti ei tule enää käyttöön
         /*userGender.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -100,7 +101,6 @@ public class AddUserActivity extends AppCompatActivity {
 
         //Tässä validoidaan pituuskenttä
         if (userHeight.getText().toString().isEmpty()) {
-            //Tähän jotain koodia, jos pituuskenttä on tyhjä
             validateHeight.setVisibility(View.VISIBLE);
             validateHeight.setText("Kenttä ei voi olla tyhjä.");
             isValid = false;

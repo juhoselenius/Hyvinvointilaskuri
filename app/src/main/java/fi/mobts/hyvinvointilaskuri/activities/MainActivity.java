@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
@@ -27,10 +26,7 @@ import fi.mobts.hyvinvointilaskuri.classes.User;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.OnDataPointTapListener;
-import com.jjoe64.graphview.series.Series;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -86,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerAddUser.setAdapter(adapter);
 
         if (!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
-            /*addUserButton.setText("Valittu: " + UserListGlobal.getInstance().getCurrentUser());*/
             addObservationButton.setVisibility(View.VISIBLE);
             spinnerGraphs.setVisibility(View.VISIBLE);
             userLayout.setVisibility(View.VISIBLE);
@@ -111,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                     sdf = new SimpleDateFormat("dd.MM.");
                     GraphViewFun gvf = new GraphViewFun();
                     LineGraphSeries<DataPoint> series = new LineGraphSeries<>(gvf.getweightDatapoints());
-
                     series.setColor(Color.BLUE);
                     series.setDrawDataPoints(true);
                     series.setDataPointsRadius(10);
@@ -132,18 +126,6 @@ public class MainActivity extends AppCompatActivity {
                         userGraphView.getViewport().setMinY(UserListGlobal.getInstance().getMinWeight());
                     }
 
-                    series.setOnDataPointTapListener(new OnDataPointTapListener() {
-                        @Override
-                        public void onTap(Series series, DataPointInterface dataPoint) {
-                            SimpleDateFormat weightDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-                            Toast.makeText(getApplicationContext(), "Paino "+"\n"+weightDate.format(dataPoint.getX())+":\n"+dataPoint.getY()+" kg", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    //userGraphView.getViewport().setScalable(true);
-                    //userGraphView.getViewport().setScrollable(true);
-                    //userGraphView.getViewport().setScalableY(true);
-                    //userGraphView.getViewport().setScrollableY(true);
                     Log.d("Jorma", "Datapointit: "+ series);
 
                     userGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
@@ -162,32 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
-        /*if(!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
-            sdf = new SimpleDateFormat("dd.MM.");
-            GraphViewFun gvf = new GraphViewFun();
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(gvf.getweightDatapoints());
-
-            userGraphView.setTitle("Paino");
-            userGraphView.setTitleColor(R.color.purple_200);
-            userGraphView.setTitleTextSize(48);
-            userGraphView.addSeries(series);
-            userGraphView.getViewport().setScalable(true);
-            userGraphView.getViewport().setScrollable(true);
-            userGraphView.getViewport().setScalableY(true);
-            userGraphView.getViewport().setScrollableY(true);
-            Log.d("Jorma", "Datapointit: "+ series);
-
-            userGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                public String formatLabel(double value, boolean isValueX) {
-                    if(isValueX) {
-                        return sdf.format(new Date((long) value));
-                    } else {
-                        return super.formatLabel(value, isValueX);
-                    }
-                }
-            });
-        }*/
     }
 
     public void observationButton(View v) {
