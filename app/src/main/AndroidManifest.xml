@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hyvinvointilaskuri">
         <activity
+            android:name=".activities.BodyMassIndexInfoActivity"
+            android:exported="true"
+            android:parentActivityName=".activities.MainActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".activities.MainActivity" />
+
+        <activity
             android:name=".activities.DeleteUserActivity"
             android:exported="true"
             android:parentActivityName=".activities.MainActivity" />

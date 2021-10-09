@@ -63,6 +63,7 @@
             android:id="@+id/textViewBMI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="bmiText"
             android:text="@string/text_BMI"
             android:textSize="20sp" />
 
@@ -70,6 +71,7 @@
             android:id="@+id/textViewBmiValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="bmiText"
             android:text="TextView"
             android:textSize="20sp" />
 

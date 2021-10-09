@@ -177,6 +177,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void bmiText(View v) {
+        Intent intent = new Intent(this, BodyMassIndexInfoActivity.class);
+
+        startActivity(intent);
+    }
+
     @Override
     protected void onPause() {
         super.onPause();

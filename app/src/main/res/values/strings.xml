@@ -18,4 +18,14 @@
     <string name="button_newUser">Lisää</string>
     <string name="empty"> </string>
     <string name="buttonDeleteUser">- Poista käyttäjä</string>
+    <string name="bmi_text">Nykyinen BMI:</string>
+    <string name="bmi_info">Painoindeksisi on</string>
+    <string name="bmi_0_15">Sairaalloinen alipaino! Ota yhteys lääkäriin!</string>
+    <string name="bmi_15_17">Merkittävä alipaino!</string>
+    <string name="bmi_17_185">Lievä alipaino!</string>
+    <string name="bmi_185_25">Normaalipaino! Hienoa, jatka samaan malliin!</string>
+    <string name="bmi_25_30">Lievä ylipaino!</string>
+    <string name="bmi_30_35">Merkittävä ylipaino!</string>
+    <string name="bmi_35_40">Vaikea ylipaino!</string>
+    <string name="bmi_40_100">Sairaalloinen ylipaino! Ota yhteys lääkäriin!</string>
 </resources>
