@@ -24,7 +24,7 @@ private ListView lw;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_user);
         lw = findViewById(R.id.listViewUsers);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, UserListGlobal.getInstance().getUsers());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.deleteuser_item_layout, UserListGlobal.getInstance().getUsers());
         lw.setAdapter(adapter);
         lw.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

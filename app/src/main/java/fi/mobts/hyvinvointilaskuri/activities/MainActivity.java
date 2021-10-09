@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private Button deleteUserButton;
     private TextView bmiValue;
     private Spinner spinnerAddUser;
-    private Spinner spinnerGraphs;
+    /*private Spinner spinnerGraphs;*/
     private LinearLayout userLayout;
     private String lastSavedData;
     private SimpleDateFormat sdf;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         addObservationButton = findViewById(R.id.buttonAddObservation);
         bmiValue = findViewById(R.id.textViewBmiValue);
         spinnerAddUser = findViewById(R.id.spinnerAddUser);
-        spinnerGraphs = findViewById(R.id.spinnerGraphs);
+        /*spinnerGraphs = findViewById(R.id.spinnerGraphs);*/
         userLayout = findViewById(R.id.linearLayout);
         userGraphView = findViewById(R.id.userGraphView);
         deleteUserButton = findViewById(R.id.buttonDeleteUser);
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
             addObservationButton.setVisibility(View.VISIBLE);
-            spinnerGraphs.setVisibility(View.VISIBLE);
+            /*spinnerGraphs.setVisibility(View.VISIBLE);*/
             userLayout.setVisibility(View.VISIBLE);
             userGraphView.setVisibility(View.VISIBLE);
             deleteUserButton.setVisibility(View.VISIBLE);
