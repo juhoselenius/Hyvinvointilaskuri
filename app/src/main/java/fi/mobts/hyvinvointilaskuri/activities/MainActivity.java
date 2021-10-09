@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
@@ -26,7 +27,10 @@ import fi.mobts.hyvinvointilaskuri.classes.User;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.Series;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,6 +38,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private GraphView userGraphView;
@@ -125,6 +130,14 @@ public class MainActivity extends AppCompatActivity {
                         userGraphView.getViewport().setMaxY(UserListGlobal.getInstance().getMaxWeight());
                         userGraphView.getViewport().setMinY(UserListGlobal.getInstance().getMinWeight());
                     }
+
+                    series.setOnDataPointTapListener(new OnDataPointTapListener() {
+                        @Override
+                        public void onTap(Series series, DataPointInterface dataPoint) {
+                            SimpleDateFormat weightDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+                            Toast.makeText(getApplicationContext(), "Paino " + "\n" + weightDate.format(dataPoint.getX()) + ":\n" + dataPoint.getY() + " kg", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
                     Log.d("Jorma", "Datapointit: "+ series);
 
