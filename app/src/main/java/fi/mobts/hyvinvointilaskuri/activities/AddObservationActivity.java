@@ -13,12 +13,16 @@ import android.widget.TextView;
 
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
+import fi.mobts.hyvinvointilaskuri.classes.HeightObservation;
 import fi.mobts.hyvinvointilaskuri.classes.WeightObservation;
 
 public class AddObservationActivity extends AppCompatActivity {
     private EditText editTextAddWeight;
+    private EditText editTextAddHeight;
     private double weight;
+    private int height;
     private TextView textView;
+    private TextView textView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,8 @@ public class AddObservationActivity extends AppCompatActivity {
                 break;
             case "height":
                 setContentView(R.layout.activity_add_height);
+                editTextAddHeight = findViewById(R.id.editTextHeightObservation);
+                textView2 = findViewById(R.id.textViewHeightObservationValidate);
                 break;
             case "meal":
                 setContentView(R.layout.activity_add_meal);
@@ -64,6 +70,33 @@ public class AddObservationActivity extends AppCompatActivity {
             UserListGlobal.getInstance().addObservation(user, wObservation);
 
             Log.d("Jorma", isValid + "Paino lisätty " + weight + " käyttäjälle " + user);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void addHeight(View v) {
+        boolean isValid = true;
+        if (!editTextAddHeight.getText().toString().isEmpty()) {
+            height = Integer.parseInt(editTextAddHeight.getText().toString());
+        }
+        if (editTextAddHeight.getText().toString().isEmpty()) {
+            textView2.setVisibility(View.VISIBLE);
+            textView2.setText("Kenttä ei voi olla tyhjä.");
+            isValid = false;
+        } else if (height > 300 || height < 20) {
+            textView2.setVisibility(View.VISIBLE);
+            textView2.setText("Pituus pitää olla väliltä 20-300 cm.");
+            isValid = false;
+        } else {
+            textView2.setVisibility(View.INVISIBLE);
+        }
+        if (isValid) {
+            HeightObservation hObservation = new HeightObservation(height, UserListGlobal.getInstance().getDate());
+            String user = UserListGlobal.getInstance().getCurrentUser();
+            UserListGlobal.getInstance().addObservation(user, hObservation);
+
+            Log.d("Jorma", isValid + "Pituus lisätty " + height + " käyttäjälle " + user);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

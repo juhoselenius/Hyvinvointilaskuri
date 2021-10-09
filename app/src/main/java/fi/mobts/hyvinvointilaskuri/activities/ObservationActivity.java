@@ -29,11 +29,11 @@ public class ObservationActivity extends AppCompatActivity {
         intent.putExtra(EXTRA, "height");
         startActivity(intent);
     }
-    public void buttonRuokailu(View v) {
+    /*public void buttonRuokailu(View v) {
         Intent intent = new Intent(this, AddObservationActivity.class);
         intent.putExtra(EXTRA, "meal");
         startActivity(intent);
-    }
+    }*/
 
 
 

@@ -9,9 +9,9 @@
 
     <Button
         android:id="@+id/buttonWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="129dp"
+        android:layout_width="187dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="112dp"
         android:onClick="buttonPaino"
         android:text="@string/lisaapaino"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,24 +20,14 @@
 
     <Button
         android:id="@+id/buttonHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="187dp"
+        android:layout_height="78dp"
         android:onClick="buttonPituus"
         android:text="@string/lisaapituus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonMeal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="141dp"
-        android:onClick="buttonRuokailu"
-        android:text="@string/lisaaruokailu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.517" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
