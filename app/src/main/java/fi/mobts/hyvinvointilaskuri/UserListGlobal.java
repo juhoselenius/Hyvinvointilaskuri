@@ -77,7 +77,7 @@ public class UserListGlobal {
     }
 
     /**
-     * The method fetches all the weights of a specific user.
+     * The method fetches all the weight observations of a specific user.
      * @param userName The user name, whose weights are to be fetched.
      * @return An arraylist of weights.
      */

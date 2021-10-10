@@ -57,6 +57,7 @@ public class AddObservationActivity extends AppCompatActivity {
      * the method is used for adding a new weight observation
      * It validates the weight data
      * Has a max and min for weight observations
+     * If data is valid creates new weight observation and starts MainActivity
      * @param v indicates the view which triggered the method call
      */
 
@@ -91,6 +92,7 @@ public class AddObservationActivity extends AppCompatActivity {
      * the method is used for adding a new height observation
      * It validates the height data
      * Has a max and mix for height observations
+     * If data is valid creates new height observation and starts MainActivity
      * @param v indicates the view which triggered the method call
      */
 

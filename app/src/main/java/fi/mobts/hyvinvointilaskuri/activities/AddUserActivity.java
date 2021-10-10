@@ -78,7 +78,7 @@ public class AddUserActivity extends AppCompatActivity {
     /**
      * The method is used to add the created userprofile
      * It is also used to validate all the collected data before adding the created user
-     * If the data is valid the method creates
+     * If the data is valid the method creates new observations for weight and height and starts MainActivity
      * @param v indicates the view which triggered the method call
      */
 
