@@ -22,6 +22,13 @@ import fi.mobts.hyvinvointilaskuri.classes.Observation;
 import fi.mobts.hyvinvointilaskuri.classes.User;
 import fi.mobts.hyvinvointilaskuri.classes.WeightObservation;
 
+/**
+ * The class <code>AddUserActivity</code> is used to create a new user profile for the application
+ * It contains all needed data for creating a new profile in the activity
+ * @author Tommi Uponen, Olli Varila, Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
+
 public class AddUserActivity extends AppCompatActivity {
     private EditText userName;
     private EditText userWeight;
@@ -67,6 +74,13 @@ public class AddUserActivity extends AppCompatActivity {
 
         });*/
     }
+
+    /**
+     * The method is used to add the created userprofile
+     * It is also used to validate all the collected data before adding the created user
+     * If the data is valid the method creates
+     * @param v essential identifier for the View widgets
+     */
 
     public void userAdded(View v) {
 
