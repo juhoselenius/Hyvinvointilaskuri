@@ -16,6 +16,12 @@ import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 import fi.mobts.hyvinvointilaskuri.classes.HeightObservation;
 import fi.mobts.hyvinvointilaskuri.classes.WeightObservation;
 
+/**
+ * the class <code>AddObservationActivity</code> is used to add new weight and height observations for the selected user
+ * @author Tommi Uponen, Olli Varila, Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
+
 public class AddObservationActivity extends AppCompatActivity {
     private EditText editTextAddWeight;
     private EditText editTextAddHeight;
@@ -47,6 +53,13 @@ public class AddObservationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * the method is used for adding a new weight observation
+     * It validates the weight data
+     * Has a max and min for weight observations
+     * @param v indicates the view which triggered the method call
+     */
+
     public void addWeight(View v) {
         boolean isValid = true;
         if (!editTextAddWeight.getText().toString().isEmpty()) {
@@ -73,6 +86,13 @@ public class AddObservationActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    /**
+     * the method is used for adding a new height observation
+     * It validates the height data
+     * Has a max and mix for height observations
+     * @param v indicates the view which triggered the method call
+     */
 
     public void addHeight(View v) {
         boolean isValid = true;

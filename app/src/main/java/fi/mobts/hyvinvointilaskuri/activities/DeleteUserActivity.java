@@ -15,6 +15,12 @@ import android.widget.ListView;
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 
+/**
+ * the class <code>DeleteUserActivity</code> is used for deleting a selected user
+ * Starts an activity with a listview where you can delete any created user profile
+ * @author Tommi Uponen, Olli Varila, Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
 
 public class DeleteUserActivity extends AppCompatActivity {
 private ListView lw;
@@ -36,6 +42,11 @@ private ListView lw;
             }
         });
     }
+
+    /**
+     * The method is used to return to the main activity after deleting a user
+     */
+
     public void toMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
