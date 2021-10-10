@@ -29,6 +29,11 @@ public class UserListGlobal {
     private String json;
     private ArrayList<String> userListSnapShot;
 
+    /**
+     * Static method to create instance the singleton.
+     * @return Instance of the singleton.
+     */
+
     public static UserListGlobal getInstance() {
         return ourInstance;
     }
@@ -54,7 +59,7 @@ public class UserListGlobal {
 
     /**
      * The method fetches the most recent weight data.
-     * @return most recent weight data.
+     * @return Most recent weight data.
      */
 
     public double getCurrentWeight() {
@@ -74,7 +79,7 @@ public class UserListGlobal {
     /**
      * The method fetches all the weights of a specific user.
      * @param userName The user name, whose weights are to be fetched.
-     * @return an arraylist of weights.
+     * @return An arraylist of weights.
      */
 
     public ArrayList<Double> getWeightsList(String userName) {
@@ -89,6 +94,12 @@ public class UserListGlobal {
         return weightList;
     }
 
+    /**
+     * The method fetches all the dates of the weight observations of a specific user.
+     * @param userName The user name, whose dates of the weight observations are to be fetched.
+     * @return An arraylist of the dates of the weight observations.
+     */
+
     public ArrayList<Date> getWeightDatesList(String userName) {
         ArrayList<Observation> observations = usersHashMap.get(userName);
         Log.d("Jorma", "Päivämäärälistan pituus: "+ observations.size());
@@ -100,6 +111,11 @@ public class UserListGlobal {
         }
         return weightDateList;
     }
+
+    /**
+     * The method returns the maximum weight of the current user.
+     * @return Maximum weight of the current user.
+     */
 
     public double getMaxWeight() {
         ArrayList<Double> weights = getWeightsList(currentUser);
@@ -113,6 +129,11 @@ public class UserListGlobal {
         return maxWeight;
     }
 
+    /**
+     * The method returns the minimum weight of the current user.
+     * @return The minimum weight of the current user.
+     */
+
     public double getMinWeight() {
         ArrayList<Double> weights = getWeightsList(currentUser);
         double minWeight = 1000;
@@ -124,6 +145,11 @@ public class UserListGlobal {
 
         return minWeight;
     }
+
+    /**
+     * The method returns the date of the maximum weight observation in <code>Double</code>.
+     * @return The date of the maximum weight observation in <code>Double</code>.
+     */
 
     public double getMaxWeightDate() {
         ArrayList<Date> dates = getWeightDatesList(currentUser);
@@ -140,6 +166,11 @@ public class UserListGlobal {
         return newMaxDate;
     }
 
+    /**
+     * The method returns the date of the minimum weight observation in <code>Double</code>.
+     * @return The date of the minimum weight observation in <code>Double</code>.
+     */
+
     public double getMinWeightDate() {
         ArrayList<Date> dates = getWeightDatesList(currentUser);
         Date minDate = new Date(Long.MAX_VALUE);
@@ -155,6 +186,11 @@ public class UserListGlobal {
         return newMinDate;
     }
 
+    /**
+     * The method fetches the most recent height observation of the current user.
+      * @return The most recent height observation of the current user.
+     */
+
     public double getCurrentHeight() {
         ArrayList<Observation> observations = usersHashMap.get(currentUser);
         int currentHeight = 0;
@@ -169,19 +205,40 @@ public class UserListGlobal {
         return currentHeight;
     }
 
+    /**
+     * The method calculates the current body mass index for the current user.
+     * @return the current body mass index for the current user.
+     */
+
     public double currentBMI() {
         double currentHeight = getCurrentHeight() / 100;
         double currentBMI = getCurrentWeight() / (currentHeight * currentHeight);
         return currentBMI;
     }
 
+    /**
+     * The method returns the current user.
+     * @return The current user.
+     */
+
     public String getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * The method adds observation of the <code>Observation</code> class to the <code>usersHashMap</code> of the <code>UserListGlobal</code>.
+     * @param name Name of the user, whose observation is added.
+     * @param observation Observation to be added.
+     */
+
     public void addObservation(String name, Observation observation) {
         usersHashMap.get(name).add(observation);
     }
+
+    /**
+     * The method adds the given user and creates a new arraylist for it.
+     * @param name User name of the new user.
+     */
 
     public void newUser(String name) {
         if (!usersHashMap.containsKey(name)) {
@@ -191,9 +248,19 @@ public class UserListGlobal {
         }
     }
 
+    /**
+     * The method creates new current <code>Date</code>.
+     * @return Current <code>Date</code>.
+     */
+
     public Date getDate() {
         return new Date();
     }
+
+    /**
+     * The method fetches a list of all users added to the application.
+     * @return The list of users.
+     */
 
     public ArrayList<String> getUsers() {
         ArrayList<String> userList = new ArrayList<>();
@@ -206,6 +273,11 @@ public class UserListGlobal {
         }
         return userList;
     }
+
+    /**
+     * The method fetches a list of all users that reacts to the selections made for the spinner.
+     * @return The list of users for the spinner.
+     */
 
     public ArrayList<String> getDropdownUsers() {
         ArrayList<String> userListTemp = new ArrayList<>(usersHashMap.keySet());
@@ -237,13 +309,28 @@ public class UserListGlobal {
         return userList;
     }
 
+    /**
+     * The method returns a snapshot of the userlist.
+     * @return A snapshot of the userlist.
+     */
+
     public ArrayList<String> getUserListSnapShot() {
         return userListSnapShot;
     }
 
+    /**
+     * The method replaces the current user hashmap with a new user hashmap.
+     * @param usersHashMap A new user hashmap.
+     */
+
     public void setUsersHashMap(LinkedHashMap<String, ArrayList<Observation>> usersHashMap) {
         this.usersHashMap = usersHashMap;
     }
+
+    /**
+     * The method converts the current user hashmap into JSON.
+     * @return A JSON string of the current hashmap.
+     */
 
     public String appDataToGson() {
         json = gson.toJson(usersHashMap);
@@ -251,11 +338,22 @@ public class UserListGlobal {
         return json;
     }
 
+    /**
+     * The method converts the given JSON string to linked hashmap.
+     * @param json A JSON string.
+     * @return A linked hashmap containing user names as keys and observations as values.
+     */
+
     public LinkedHashMap<String, ArrayList<Observation>> appDataFromGson(String json) {
         LinkedHashMap<String, ArrayList<Observation>> fromJson = gson.fromJson(json, token.getType());
 
         return fromJson;
     }
+
+    /**
+     * The method removes the user that is given.
+     * @param user User name to be removed.
+     */
 
     public void removeUser(String user) {
         usersHashMap.remove(user);
