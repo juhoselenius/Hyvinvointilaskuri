@@ -8,19 +8,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 
+/**
+ * The class <code>GraphViewFun</code> contains the functionality of the Graphview.
+ * @author Tommi Uponen, Olli Varila and Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
+
 public class GraphViewFun {
-    private ArrayList<Date> bmiDateList;
     private ArrayList<Date> weightDateList;
     private ArrayList<Double> weightList;
-    private ArrayList<Double> bmiList;
+
+    /**
+     * The method is used to create a new GraphViewFun object.
+     */
 
     public GraphViewFun() {
-        this.bmiDateList = new ArrayList<>();
-        this.bmiList = new ArrayList<>();
         this.weightDateList = new ArrayList<>();
         this.weightList = new ArrayList<>();
 
     }
+
+    /**
+     * The method fetches weight observation values and their dates and convert them to a datapoint table.
+     * @return A datapoint table of weight observations.
+     */
 
     public DataPoint[] getweightDatapoints () {
         weightDateList = UserListGlobal.getInstance().getWeightDatesList(UserListGlobal.getInstance().getCurrentUser());
@@ -36,15 +47,4 @@ public class GraphViewFun {
 
         return weightDataPoints;
     }
-
-
-    //Metodi, jolla graafin saa sovitettua näkymään, mutta vaatii listojen maksimi ja minimit
-    /*public void setAxisBoundsManual(GraphView gv) {
-        gv.getViewport().setYAxisBoundsManual(true);
-        gv.getViewport().setMaxY();
-        gv.getViewport().setMinY();
-
-        gv.getViewport().setMaxX();
-        gv.getViewport().setMinX();
-    }*/
 }

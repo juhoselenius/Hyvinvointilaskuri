@@ -7,6 +7,12 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
+/**
+ * The class <code>ObservationDeserializer</code> is used to help define the arbitrary type object <code>Observation</code> for JSON conversion.
+ * @author Juho Selenius
+ * @version 1.0 (13.10.2021)
+ */
+
 public class ObservationDeserializer implements JsonDeserializer<Observation> {
 
     @Override
