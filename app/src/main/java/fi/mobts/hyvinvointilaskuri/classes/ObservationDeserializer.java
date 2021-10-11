@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 
 /**
  * The class <code>ObservationDeserializer</code> is used to help define the arbitrary type object <code>Observation</code> for JSON conversion.
- * @author Juho Selenius
+ * @author Tommi Uponen, Olli Varila and Juho Selenius
  * @version 1.0 (13.10.2021)
  */
 

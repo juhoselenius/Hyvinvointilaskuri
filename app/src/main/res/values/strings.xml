@@ -23,7 +23,7 @@
     <string name="bmi_0_15">Sairaalloinen alipaino! Ota yhteys lääkäriin!</string>
     <string name="bmi_15_17">Merkittävä alipaino!</string>
     <string name="bmi_17_185">Lievä alipaino!</string>
-    <string name="bmi_185_25">Normaalipaino! Hienoa, jatka samaan malliin!</string>
+    <string name="bmi_185_25">Normaalipaino! Jatka samaan malliin!</string>
     <string name="bmi_25_30">Lievä ylipaino!</string>
     <string name="bmi_30_35">Merkittävä ylipaino!</string>
     <string name="bmi_35_40">Vaikea ylipaino!</string>

@@ -11,7 +11,7 @@ import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 
 /**
  * The class <code>BodyMassIndexInfoActivity</code> is an application activity, where BMI info of the current user can be viewed.
- * @author Juho Selenius
+ * @author Tommi Uponen, Olli Varila and Juho Selenius
  * @version 1.0 (13.10.2021)
  */
 
