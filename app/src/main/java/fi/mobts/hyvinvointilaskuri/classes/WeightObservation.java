@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * The class <code>WeightObservation</code> defines observations of the weight type.
- * @author
+ * @author Tommi Uponen, Olli Varila and Juho Selenius
  * @version 1.0 (13.10.2021)
  */
 

@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * The class <code>HeightObservation</code> defines observations of the height type.
- * @author
+ * @author Tommi Uponen, Olli Varila and Juho Selenius
  * @version 1.0 (13.10.2021)
  */
 
