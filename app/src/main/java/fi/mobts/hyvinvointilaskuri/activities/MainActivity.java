@@ -44,28 +44,22 @@ import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity {
     private GraphView userGraphView;
-    private Button addUserButton;
-    private Button addObservationButton;
-    private Button deleteUserButton;
-    private TextView bmiValue;
-    private Spinner spinnerAddUser;
-    private LinearLayout userLayout;
-    private String lastSavedData;
     private SimpleDateFormat sdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addUserButton = findViewById(R.id.buttonAddUser);
-        addObservationButton = findViewById(R.id.buttonAddObservation);
-        bmiValue = findViewById(R.id.textViewBmiValue);
-        spinnerAddUser = findViewById(R.id.spinnerAddUser);
-        userLayout = findViewById(R.id.linearLayout);
+        Button addUserButton = findViewById(R.id.buttonAddUser);
+        Button addObservationButton = findViewById(R.id.buttonAddObservation);
+        TextView bmiValue = findViewById(R.id.textViewBmiValue);
+        Spinner spinnerAddUser = findViewById(R.id.spinnerAddUser);
+        LinearLayout userLayout = findViewById(R.id.linearLayout);
         userGraphView = findViewById(R.id.userGraphView);
-        deleteUserButton = findViewById(R.id.buttonDeleteUser);
+        Button deleteUserButton = findViewById(R.id.buttonDeleteUser);
         userGraphView = findViewById(R.id.userGraphView);
-        /*
+
+        /* This code empties SharedPreferences for the emulator
         SharedPreferences prefClear = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefClear.edit();
         prefEditor.clear();
@@ -73,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         */
 
         SharedPreferences prefGet = getSharedPreferences("AppPref" , Activity.MODE_PRIVATE);
-        lastSavedData = prefGet.getString("PrefKeyHashMap", "{}");
+        String lastSavedData = prefGet.getString("PrefKeyHashMap", "{}");
         String savedCurrentUser = prefGet.getString("PrefKeyCurrentUser", "Ei käyttäjää");
 
         if(!lastSavedData.equals("")) {

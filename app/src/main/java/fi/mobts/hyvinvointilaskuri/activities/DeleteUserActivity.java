@@ -23,13 +23,12 @@ import fi.mobts.hyvinvointilaskuri.UserListGlobal;
  */
 
 public class DeleteUserActivity extends AppCompatActivity {
-private ListView lw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_user);
-        lw = findViewById(R.id.listViewUsers);
+        ListView lw = findViewById(R.id.listViewUsers);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.deleteuser_item_layout, UserListGlobal.getInstance().getUsers());
         lw.setAdapter(adapter);
         lw.setOnItemClickListener(new AdapterView.OnItemClickListener() {

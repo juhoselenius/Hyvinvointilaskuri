@@ -30,7 +30,6 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText userWeight;
     private EditText userHeight;
     private RadioGroup userGender;
-    private String gender;
     private String name;
     private double weight;
     private int height;
@@ -103,12 +102,12 @@ public class AddUserActivity extends AppCompatActivity {
             validateHeight.setVisibility(View.INVISIBLE);
         }
 
-        //Tallennetaan sukupuoli-valinta
+        /*Tallennetaan sukupuoli-valinta (valmius)
         if (userGender.getCheckedRadioButtonId() == R.id.rbGenderMale) {
-            gender = "male";
+            String gender = "male";
         } else if (userGender.getCheckedRadioButtonId() == R.id.rbGenderFemale) {
-            gender = "female";
-        }
+            String gender = "female";
+        }*/
 
         //Luodaan ensihavainnot
         if (isValid == true) {
