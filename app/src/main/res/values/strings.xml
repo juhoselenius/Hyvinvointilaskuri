@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hyvinvointilaskuri</string>
+    <string name="app_name">WeightStalker</string>
     <string name="add_user">+ Lisää käyttäjä</string>
     <string name="add_observation">+ Lisää havainto</string>
     <string name="text_BMI">Nykyinen BMI:</string>
