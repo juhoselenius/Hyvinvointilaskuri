@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +21,6 @@ import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 import fi.mobts.hyvinvointilaskuri.classes.GraphViewFun;
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
-import fi.mobts.hyvinvointilaskuri.classes.User;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
@@ -35,10 +33,7 @@ import com.jjoe64.graphview.series.Series;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * The class <code>MainActivity</code> is the main activity of the application.
@@ -54,15 +49,9 @@ public class MainActivity extends AppCompatActivity {
     private Button deleteUserButton;
     private TextView bmiValue;
     private Spinner spinnerAddUser;
-    /*private Spinner spinnerGraphs;*/
     private LinearLayout userLayout;
     private String lastSavedData;
     private SimpleDateFormat sdf;
-
-    /**
-     * The method is used to create the activity and sets up the UI layout and components.
-     * It also fetches the previously saved data from the memory.
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         addObservationButton = findViewById(R.id.buttonAddObservation);
         bmiValue = findViewById(R.id.textViewBmiValue);
         spinnerAddUser = findViewById(R.id.spinnerAddUser);
-        /*spinnerGraphs = findViewById(R.id.spinnerGraphs);*/
         userLayout = findViewById(R.id.linearLayout);
         userGraphView = findViewById(R.id.userGraphView);
         deleteUserButton = findViewById(R.id.buttonDeleteUser);
@@ -100,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (!(UserListGlobal.getInstance().getUsers().contains("Ei käyttäjää"))) {
             addObservationButton.setVisibility(View.VISIBLE);
-            /*spinnerGraphs.setVisibility(View.VISIBLE);*/
             userLayout.setVisibility(View.VISIBLE);
             userGraphView.setVisibility(View.VISIBLE);
             deleteUserButton.setVisibility(View.VISIBLE);
@@ -142,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
                         userGraphView.getViewport().setMaxY(UserListGlobal.getInstance().getMaxWeight());
                         userGraphView.getViewport().setMinY(UserListGlobal.getInstance().getMinWeight());
                     }
+
+                    userGraphView.getViewport().setScalable(true);
 
                     series.setOnDataPointTapListener(new OnDataPointTapListener() {
                         @Override

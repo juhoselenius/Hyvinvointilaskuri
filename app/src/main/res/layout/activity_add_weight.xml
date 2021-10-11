@@ -39,7 +39,7 @@
         android:digits="0123456789."
         android:ems="10"
         android:hint="Syötä paino (kg):"
-        android:inputType="numberDecimal"
+        android:inputType="numberDecimal|numberSigned"
         android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"

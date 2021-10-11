@@ -47,9 +47,6 @@ public class AddObservationActivity extends AppCompatActivity {
                 editTextAddHeight = findViewById(R.id.editTextHeightObservation);
                 textView2 = findViewById(R.id.textViewHeightObservationValidate);
                 break;
-            /*case "meal":
-                setContentView(R.layout.activity_add_meal);
-                break;*/
         }
     }
 

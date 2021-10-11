@@ -12,14 +12,10 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.util.Date;
-import java.util.HashMap;
-
 import fi.mobts.hyvinvointilaskuri.R;
 import fi.mobts.hyvinvointilaskuri.UserListGlobal;
 import fi.mobts.hyvinvointilaskuri.classes.HeightObservation;
 import fi.mobts.hyvinvointilaskuri.classes.Observation;
-import fi.mobts.hyvinvointilaskuri.classes.User;
 import fi.mobts.hyvinvointilaskuri.classes.WeightObservation;
 
 /**
@@ -54,25 +50,6 @@ public class AddUserActivity extends AppCompatActivity {
         validateHeight = findViewById(R.id.textViewHeightValidateMessage);
         validateWeight = findViewById(R.id.textViewWeightValidateMessage);
 
-        Intent intent = getIntent();
-
-        //luultavasti ei tule enää käyttöön
-        /*userGender.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                int selectedId = userGender.getCheckedRadioButtonId();
-
-                if (selectedId == R.id.rbGenderMale) {
-                    gender = "male";
-                } else if (selectedId == R.id.rbGenderFemale) {
-                    gender = "female";
-                }
-
-            }
-
-        });*/
     }
 
     /**
@@ -138,8 +115,6 @@ public class AddUserActivity extends AppCompatActivity {
             Observation firstWeight = new WeightObservation(weight, UserListGlobal.getInstance().getDate());
             Observation firstHeight = new HeightObservation(height, UserListGlobal.getInstance().getDate());
 
-
-            User user = new User(name, weight, height, gender);
             UserListGlobal.getInstance().newUser(name);
             UserListGlobal.getInstance().setCurrentUser(name);
             UserListGlobal.getInstance().addObservation(name, firstWeight);
